@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://loa31i1g71qi"]
+
+[ext_resource type="Script" path="res://scripts/Rocket.gd" id="1_t3ibr"]
+[ext_resource type="Texture2D" uid="uid://dl226vufynka5" path="res://assets/rocket.png" id="2_fbkiv"]
+[ext_resource type="Script" path="res://scenes/CPUParticles2D.gd" id="3_23twd"]
+
+[node name="Rocket" type="CharacterBody2D"]
+position = Vector2(4, 4)
+script = ExtResource("1_t3ibr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-28, -37)
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(7, 133, 67, 6, 126, 133, 64, 133)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.00001, -1)
+scale = Vector2(0.21787, 0.21787)
+texture = ExtResource("2_fbkiv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-1, 16)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 0)
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.770239, 1.49205e-06, 0.435784, 1)
+script = ExtResource("3_23twd")

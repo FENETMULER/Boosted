@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://loa31i1g71qi"]
+
+[ext_resource type="Script" path="res://scripts/Rocket.gd" id="1_t3ibr"]
+[ext_resource type="Texture2D" uid="uid://ufltrnilb3bt" path="res://assets/Neon Rocket.png" id="2_o8l2a"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jgvxw"]
+
+[sub_resource type="Curve" id="Curve_h123n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_v3lv8"]
+offsets = PackedFloat32Array(0, 0.355357)
+colors = PackedColorArray(0.224411, 0.472297, 1, 1, 0.805547, 0.0182082, 0.430722, 1)
+
+[node name="Rocket" type="CharacterBody2D"]
+position = Vector2(4, 4)
+script = ExtResource("1_t3ibr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_jgvxw")
+position = Vector2(-1, 16)
+amount = 120
+lifetime = 0.5
+randomness = 0.44
+direction = Vector2(0, 30)
+spread = 6.67
+gravity = Vector2(0, 0)
+initial_velocity_min = 52.63
+initial_velocity_max = 138.15
+angle_min = -705.8
+angle_max = -686.9
+scale_amount_min = 0.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_h123n")
+color_ramp = SubResource("Gradient_v3lv8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-28, -37)
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(7, 133, 67, 6, 126, 133, 64, 133)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, 1)
+rotation = 0.502195
+scale = Vector2(0.343454, 0.343454)
+texture = ExtResource("2_o8l2a")
