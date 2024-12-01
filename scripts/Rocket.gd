@@ -43,3 +43,7 @@ func _on_button_pressed():
 	position.y = -258
 	velocity = Vector2(0, 0)
 	rotation = 0
+
+
+func _on_left_button_pressed() -> void:
+	pass # Replace with function body.
