@@ -117,36 +117,84 @@ grow_horizontal = 0
 text = "Current Best: "
 label_settings = SubResource("LabelSettings_fqof6")
 
-[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="LeftButtonContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -211.0
+offset_right = 230.0
+offset_bottom = -171.0
+grow_vertical = 0
+
+[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/LeftButtonContainer"]
 modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(-69, -75)
 scale = Vector2(1.0365, 1.0365)
 texture_normal = ExtResource("3_2ie33")
 passby_press = true
 action = "rotate_left"
 
-[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="RestartButtonContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 615.0
+offset_top = -215.0
+offset_right = 655.0
+offset_bottom = -175.0
+grow_vertical = 0
+
+[node name="RestartButton" type="TouchScreenButton" parent="CanvasLayer/RestartButtonContainer"]
 modulate = Color(1, 1, 1, 0.862745)
-position = Vector2(287, 437)
+position = Vector2(-69, -75)
+scale = Vector2(1.13017, 1.09583)
+texture_normal = ExtResource("8_gjf5c")
+
+[node name="RightButtonContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 407.0
+offset_top = -217.0
+offset_right = 447.0
+offset_bottom = -177.0
+grow_vertical = 0
+
+[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/RightButtonContainer"]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(-66, -68)
 scale = Vector2(1.05839, 1.05839)
 texture_normal = ExtResource("4_7h653")
 passby_press = true
 action = "rotate_right"
 
-[node name="UpButton" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="UpButtonContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -214.0
+offset_right = -120.0
+offset_bottom = -174.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="UpButton" type="TouchScreenButton" parent="CanvasLayer/UpButtonContainer"]
 modulate = Color(1, 1, 1, 0.862745)
-position = Vector2(930, 437)
+position = Vector2(-83, -62)
 scale = Vector2(1.10219, 1.10219)
 texture_normal = ExtResource("5_bl28i")
 passby_press = true
 action = "boost"
 
-[node name="RestartButton" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.862745)
-position = Vector2(498, 429)
-scale = Vector2(1.13017, 1.09583)
-texture_normal = ExtResource("8_gjf5c")
-
 [connection signal="body_entered" from="FinishLine" to="." method="_on_finish_line_body_entered"]
-[connection signal="pressed" from="CanvasLayer/UpButton" to="." method="_on_up_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/RestartButton" to="Rocket" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RestartButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RestartButtonContainer/RestartButton" to="Rocket" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpButtonContainer/UpButton" to="." method="_on_up_button_pressed"]
