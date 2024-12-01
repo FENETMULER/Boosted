@@ -109,10 +109,10 @@ label_settings = SubResource("LabelSettings_d6mes")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -395.0
-offset_top = 17.0
-offset_right = -28.0
-offset_bottom = 100.0
+offset_left = -551.0
+offset_top = 15.0
+offset_right = -184.0
+offset_bottom = 98.0
 grow_horizontal = 0
 text = "Current Best: "
 label_settings = SubResource("LabelSettings_fqof6")
@@ -122,10 +122,10 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 190.0
-offset_top = -211.0
-offset_right = 230.0
-offset_bottom = -171.0
+offset_left = 133.0
+offset_top = -167.0
+offset_right = 173.0
+offset_bottom = -127.0
 grow_vertical = 0
 
 [node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/LeftButtonContainer"]
@@ -136,32 +136,15 @@ texture_normal = ExtResource("3_2ie33")
 passby_press = true
 action = "rotate_left"
 
-[node name="RestartButtonContainer" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 615.0
-offset_top = -215.0
-offset_right = 655.0
-offset_bottom = -175.0
-grow_vertical = 0
-
-[node name="RestartButton" type="TouchScreenButton" parent="CanvasLayer/RestartButtonContainer"]
-modulate = Color(1, 1, 1, 0.862745)
-position = Vector2(-69, -75)
-scale = Vector2(1.13017, 1.09583)
-texture_normal = ExtResource("8_gjf5c")
-
 [node name="RightButtonContainer" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 407.0
-offset_top = -217.0
-offset_right = 447.0
-offset_bottom = -177.0
+offset_left = 353.0
+offset_top = -173.0
+offset_right = 393.0
+offset_bottom = -133.0
 grow_vertical = 0
 
 [node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/RightButtonContainer"]
@@ -172,6 +155,23 @@ texture_normal = ExtResource("4_7h653")
 passby_press = true
 action = "rotate_right"
 
+[node name="RestartButtonContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 573.0
+offset_top = -174.0
+offset_right = 613.0
+offset_bottom = -134.0
+grow_vertical = 0
+
+[node name="RestartButton" type="TouchScreenButton" parent="CanvasLayer/RestartButtonContainer"]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(-69, -75)
+scale = Vector2(1.13017, 1.09583)
+texture_normal = ExtResource("8_gjf5c")
+
 [node name="UpButtonContainer" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 3
@@ -179,10 +179,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -214.0
-offset_right = -120.0
-offset_bottom = -174.0
+offset_left = -196.0
+offset_top = -174.0
+offset_right = -156.0
+offset_bottom = -134.0
 grow_horizontal = 0
 grow_vertical = 0
 
