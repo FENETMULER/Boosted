@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ufltrnilb3bt"
-path="res://.godot/imported/Neon Rocket.png-535db66bf6034c0099ffcaa6df085eba.ctex"
+uid="uid://jbusisi1x4kl"
+path="res://.godot/imported/Neon Rocket.svg-372b77d1a8aa782dc91173b25c272ee2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Neon Rocket.png"
-dest_files=["res://.godot/imported/Neon Rocket.png-535db66bf6034c0099ffcaa6df085eba.ctex"]
+source_file="res://assets/Neon Rocket.svg"
+dest_files=["res://.godot/imported/Neon Rocket.svg-372b77d1a8aa782dc91173b25c272ee2.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

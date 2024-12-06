@@ -8,7 +8,7 @@ var particles
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	particles = $CPUParticles2D
+	particles = $RocketParticles
 	
 func _physics_process(delta):
 	
@@ -38,12 +38,8 @@ func apply_boost():
 	velocity += Vector2.UP.rotated(rotation) * boost_force
 	
 
-func _on_button_pressed():
+func _on_restart_button_pressed() -> void:
 	position.x = -461
 	position.y = -258
 	velocity = Vector2(0, 0)
 	rotation = 0
-
-
-func _on_left_button_pressed() -> void:
-	pass # Replace with function body.

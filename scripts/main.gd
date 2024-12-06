@@ -9,14 +9,11 @@ var restarted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer_label = $CanvasLayer/Label
-	current_best_value = $CanvasLayer/CurrentBestValue
+	timer_label = $PlayerControls/Label
+	current_best_value = $PlayerControls/CurrentBestValue
 	display_high_score()
 	
 	
-	
-
-
 func start_timer():
 	timer.start(0.01)
 func stop_timer():
@@ -43,11 +40,11 @@ func display_high_score():
 	
 func _physics_process(delta):
 	time_passed += delta
-	var formatted_time = str(floor(time_passed * 100)/100)
+	var formatted_time = str(floor(time_passed * 100) / 100)
 	timer_label.text = formatted_time
 	
 func format_time(time):
-	return str(floor(time * 100)/100)
+	return str(floor(time * 100) / 100)
 
 func _on_finish_line_body_entered(body):
 	if time_passed < get_high_score():
