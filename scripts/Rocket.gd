@@ -9,7 +9,6 @@ var particles
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	particles = $RocketParticles
-	
 func _physics_process(delta):
 	
 	if Input.is_action_pressed("rotate_left"):
@@ -24,13 +23,13 @@ func _physics_process(delta):
 	else:
 		particles.emitting = true
 	velocity *= drag
-
 	move_and_slide()
 	#if (get_slide_collision_count() > 0):
 		#print('game over')
 	
 func rotate_left(delta):
 	rotation -= rotation_speed * delta
+	
 func rotate_right(delta):
 	rotation += rotation_speed * delta
 	

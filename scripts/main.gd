@@ -9,8 +9,8 @@ var restarted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer_label = $PlayerControls/Label
-	current_best_value = $PlayerControls/CurrentBestValue
+	timer_label = $Level/PlayerControls/Label
+	current_best_value = $Level/PlayerControls/CurrentBestValue
 	display_high_score()
 	
 	
