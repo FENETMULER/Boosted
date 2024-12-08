@@ -2,15 +2,17 @@ extends Node2D
 
 var timer = Timer.new()
 var time_passed = 0.0
-var timer_label
-var current_best_value
+@onready var level = $Level
+@onready var main_menu = $UI/MainMenu
+@onready var player_controls = $Level/PlayerControls # TODO: use level reference here
+@onready var timer_label = $Level/PlayerControls/Label # TODO: use level reference here
+@onready var current_best_value = $Level/PlayerControls/CurrentBestValue # TODO: use level reference here
 var restarted = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer_label = $Level/PlayerControls/Label
-	current_best_value = $Level/PlayerControls/CurrentBestValue
+	change_level_visibility(false)
 	display_high_score()
 	
 	
@@ -18,6 +20,10 @@ func start_timer():
 	timer.start(0.01)
 func stop_timer():
 	timer.stop()
+
+func change_level_visibility(visibility: bool): # This is necessary since player_controls which is a CanvasLayer node isn't affected by the visibility of its parent
+	level.visible = visibility
+	player_controls.visible = visibility
 	
 func get_high_score():
 	var config = ConfigFile.new()
@@ -65,3 +71,12 @@ func _on_up_button_pressed():
 	if restarted == true:
 		set_physics_process(true)
 		restarted = false
+
+
+func _on_play_pressed() -> void:
+	change_level_visibility(true)
+	main_menu.visible = false
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

@@ -133,5 +133,7 @@ text = "Quit"
 [connection signal="pressed" from="Level/PlayerControls/RestartButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Level/PlayerControls/RestartButtonContainer/RestartButton" to="Level/Rocket" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Level/PlayerControls/UpButtonContainer/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="Level/PlayerControls"]
