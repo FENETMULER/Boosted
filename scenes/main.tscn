@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm0k2gpdq08ng"]
+[gd_scene load_steps=13 format=3 uid="uid://bm0k2gpdq08ng"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_x87r7"]
 [ext_resource type="PackedScene" uid="uid://loa31i1g71qi" path="res://scenes/player/Rocket.tscn" id="2_2tr4l"]
 [ext_resource type="Texture2D" uid="uid://dtmmsuq6mtu10" path="res://assets/obstacle.png" id="3_hgp3a"]
 [ext_resource type="Texture2D" uid="uid://ckvuaji0xlgb3" path="res://assets/finish line.png" id="4_0gfqu"]
 [ext_resource type="PackedScene" uid="uid://dm4j4hg71vece" path="res://scenes/ui/PlayerControls.tscn" id="5_2s403"]
+[ext_resource type="Theme" uid="uid://w4m5ybclqpn6" path="res://themes/MainMenuTheme.tres" id="6_x242g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2q33x"]
 texture = ExtResource("3_hgp3a")
@@ -34,7 +35,7 @@ sources/1 = SubResource("TileSetAtlasSource_ugx3u")
 background_mode = 3
 glow_enabled = true
 glow_normalized = true
-glow_intensity = 1.11
+glow_intensity = 1.86
 glow_strength = 0.69
 glow_bloom = 0.54
 glow_blend_mode = 1
@@ -45,7 +46,7 @@ glow_map_strength = 1.0
 size = Vector2(26, 121)
 
 [sub_resource type="LabelSettings" id="LabelSettings_awcvb"]
-font_size = 52
+font_size = 100
 
 [node name="Main" type="Node2D"]
 position = Vector2(578, 323)
@@ -97,6 +98,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_x242g")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu"]
 layout_mode = 1
@@ -105,10 +107,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -54.0
-offset_right = 103.0
-offset_bottom = 54.0
+offset_left = -198.0
+offset_top = -121.0
+offset_right = 198.0
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -116,6 +118,7 @@ grow_vertical = 2
 layout_mode = 2
 text = "Boosted"
 label_settings = SubResource("LabelSettings_awcvb")
+horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="UI/MainMenu/VBoxContainer"]
 layout_mode = 2

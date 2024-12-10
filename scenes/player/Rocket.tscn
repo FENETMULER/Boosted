@@ -43,7 +43,7 @@ scale = Vector2(0.4, 0.4)
 polygon = PackedVector2Array(7, 133, 67, 6, 126, 133, 64, 133)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, 1)
+position = Vector2(7, 4.76837e-07)
 rotation = 0.502195
-scale = Vector2(0.343454, 0.343454)
+scale = Vector2(0.0548767, 0.0548767)
 texture = SubResource("CompressedTexture2D_rl2sv")
