@@ -1,35 +1,107 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm0k2gpdq08ng"]
+[gd_scene load_steps=13 format=4 uid="uid://bm0k2gpdq08ng"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_x87r7"]
 [ext_resource type="PackedScene" uid="uid://loa31i1g71qi" path="res://scenes/player/Rocket.tscn" id="2_2tr4l"]
-[ext_resource type="Texture2D" uid="uid://dtmmsuq6mtu10" path="res://assets/obstacle.png" id="3_hgp3a"]
-[ext_resource type="Texture2D" uid="uid://ckvuaji0xlgb3" path="res://assets/finish line.png" id="4_0gfqu"]
+[ext_resource type="Texture2D" uid="uid://b843fyu0xg6pu" path="res://assets/up_arrow.png" id="3_5t12a"]
+[ext_resource type="Texture2D" uid="uid://b6b1y0ewbedkm" path="res://assets/Vector 34.svg" id="4_6qihy"]
 [ext_resource type="PackedScene" uid="uid://dm4j4hg71vece" path="res://scenes/ui/PlayerControls.tscn" id="5_2s403"]
 [ext_resource type="Theme" uid="uid://w4m5ybclqpn6" path="res://themes/MainMenuTheme.tres" id="6_x242g"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2q33x"]
-texture = ExtResource("3_hgp3a")
-separation = Vector2i(1, 0)
-texture_region_size = Vector2i(11, 10)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_smibk"]
+texture = ExtResource("3_5t12a")
+texture_region_size = Vector2i(100, 100)
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
 0:0/0 = 0
-0:0/0/z_index = -1
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5, -5, 5.5, -5, 5.5, 5, -5.5, 5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ugx3u"]
-texture = ExtResource("4_0gfqu")
-texture_region_size = Vector2i(11, 10)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5bn7"]
+texture = ExtResource("4_6qihy")
+texture_region_size = Vector2i(26, 23)
 0:0/0 = 0
-0:0/0/z_index = -1
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5, -5, 5.5, -5, 5.5, 5, -5.5, 5)
-0:8/0 = 0
-0:9/0 = 0
-0:10/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_l7fd4"]
-tile_size = Vector2i(11, 10)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_2q33x")
-sources/1 = SubResource("TileSetAtlasSource_ugx3u")
+[sub_resource type="TileSet" id="TileSet_gxtc1"]
+tile_size = Vector2i(20, 20)
+sources/0 = SubResource("TileSetAtlasSource_smibk")
+sources/1 = SubResource("TileSetAtlasSource_p5bn7")
 
 [sub_resource type="Environment" id="Environment_oisao"]
 background_mode = 3
@@ -58,17 +130,16 @@ script = ExtResource("1_x87r7")
 position = Vector2(-461, -258)
 
 [node name="Camera2D" type="Camera2D" parent="Level/Rocket"]
+zoom = Vector2(1.15, 1.15)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_speed = 0.0
 
-[node name="TileMap" type="TileMap" parent="Level"]
-self_modulate = Color(0.971402, 0.281165, 0.774238, 1)
-position = Vector2(48, 25)
-scale = Vector2(2.5, 2.5)
-tile_set = SubResource("TileSet_l7fd4")
-format = 2
-layer_0/tile_data = PackedInt32Array(-524310, 0, 0, -458774, 0, 0, -393238, 0, 0, -327702, 0, 0, -262166, 0, 0, -196630, 0, 0, -131094, 0, 0, -65558, 0, 0, -22, 0, 0, 65514, 0, 0, -589846, 0, 0, -655382, 0, 0, -720918, 0, 0, -786454, 0, 0, -851990, 0, 0, -917526, 0, 0, -917525, 0, 0, -917524, 0, 0, -917523, 0, 0, -917522, 0, 0, -917521, 0, 0, -917520, 0, 0, -917519, 0, 0, -917518, 0, 0, -917517, 0, 0, -917516, 0, 0, -917515, 0, 0, -917514, 0, 0, -917513, 0, 0, -917512, 0, 0, -917511, 0, 0, -589835, 0, 0, -589836, 0, 0, -589837, 0, 0, -589838, 0, 0, -589839, 0, 0, -589840, 0, 0, -262160, 0, 0, -262159, 0, 0, -262158, 0, 0, -262157, 0, 0, -262156, 0, 0, -262155, 0, 0, -262154, 0, 0, -262153, 0, 0, -262152, 0, 0, -262151, 0, 0, -262150, 0, 0, -917510, 0, 0, -851974, 0, 0, -786438, 0, 0, -720902, 0, 0, -655366, 0, 0, -589830, 0, 0, -524294, 0, 0, -458758, 0, 0, -393222, 0, 0, -327686, 0, 0, -196621, 0, 0, -131085, 0, 0, -65549, 0, 0, 131050, 0, 0, 196586, 0, 0, 262122, 0, 0, 327658, 0, 0, 393194, 0, 0, 458730, 0, 0, 524266, 0, 0, 131051, 0, 0, 131052, 0, 0, 131053, 0, 0, 589802, 0, 0, 655338, 0, 0, 720874, 0, 0, 786410, 0, 0, 851946, 0, 0, 917482, 0, 0, 983018, 0, 0, 524272, 0, 0, 524273, 0, 0, 524274, 0, 0, 524275, 0, 0, 524276, 0, 0, 524277, 0, 0, 524278, 0, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 458745, 0, 0, 393209, 0, 0, 327673, 0, 0, 262137, 0, 0, 196601, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 0, 0, 0, -65536, 0, 0, -131072, 0, 0, -196608, 0, 0, -262144, 0, 0, -327680, 0, 0, -262145, 0, 0, -262146, 0, 0, -262147, 0, 0, -262148, 0, 0, -262149, 0, 0, 983019, 0, 0, 983020, 0, 0, 983021, 0, 0, 983022, 0, 0, 983023, 0, 0, 983024, 0, 0, 983025, 0, 0, 983026, 0, 0, 983027, 0, 0, 983028, 0, 0, 983029, 0, 0, 983030, 0, 0, 983031, 0, 0, 983032, 0, 0, 983033, 0, 0, 983034, 0, 0, 983035, 0, 0, 983036, 0, 0, 983037, 0, 0, 983038, 0, 0, 983039, 0, 0, 917504, 0, 0, 851968, 0, 0, 786432, 0, 0, 720896, 0, 0, 655360, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 851977, 0, 0, 786441, 0, 0, 720905, 0, 0, 655369, 0, 0, 589833, 0, 0, 524297, 0, 0, 458761, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 393230, 0, 0, 327694, 0, 0, 262158, 0, 0, 196622, 0, 0, 458757, 0, 0, 393221, 0, 0, 327685, 0, 0, 524288, 0, 0, 589824, 0, 0, 131086, 0, 0, 65550, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, -524304, 0, 0, -458768, 0, 0, -393232, 0, 0, -327696, 0, 0, -655354, 0, 0, -589818, 0, 0, -524282, 0, 0, -458746, 0, 0, -393210, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -327671, 0, 0, -327670, 0, 0, -262134, 0, 0, -196598, 0, 0, -131062, 0, 0, -65526, 0, 0, 10, 0, 0, -655360, 0, 0, -655359, 0, 0, -655358, 0, 0, -655357, 0, 0, -655356, 0, 0, -655355, 0, 0, -917509, 0, 0, -917508, 0, 0, -917507, 0, 0, -917506, 0, 0, -917505, 0, 0, -983040, 0, 0, -983039, 0, 0, -983038, 0, 0, -983037, 0, 0, -983036, 0, 0, -983035, 0, 0, -983034, 0, 0, -983033, 0, 0, -983032, 0, 0, -983031, 0, 0, -983030, 0, 0, -983029, 0, 0, -983028, 0, 0, -983027, 0, 0, -983026, 0, 0, -983025, 0, 0, -983024, 0, 0, -983023, 0, 0, -983022, 0, 0, -983021, 0, 0, -458736, 0, 0, -524272, 0, 0, -524271, 0, 0, -524270, 0, 0, -524269, 0, 0, -524268, 0, 0, -524267, 0, 0, -524266, 0, 0, -524265, 0, 0, -524264, 0, 0, -524263, 0, 0, -262128, 0, 0, -327664, 0, 0, -393200, 0, 0, -458731, 0, 0, -393195, 0, 0, -327659, 0, 0, -262123, 0, 0, -196587, 0, 0, -131051, 0, 0, -65515, 0, 0, 21, 0, 0, 65557, 0, 0, 65556, 0, 0, 65555, 0, 0, -983020, 0, 0, -983019, 0, 0, -983018, 0, 0, -983017, 0, 0, -983016, 0, 0, -983015, 0, 0, -983014, 0, 0, -983013, 0, 0, -983012, 0, 0, -983011, 0, 0, -983010, 0, 0, -983009, 0, 0, -983008, 0, 0, -983007, 0, 0, -983006, 0, 0, -917470, 0, 0, -851934, 0, 0, -786398, 0, 0, -720862, 0, 0, -655326, 0, 0, -589790, 0, 0, -524254, 0, 0, -458718, 0, 0, -393182, 0, 0, -327646, 0, 0, -262110, 0, 0, -196574, 0, 0, -131038, 0, 0, -65502, 0, 0, 34, 0, 0, 65570, 0, 0, -131039, 0, 0, -131040, 0, 0, -131041, 0, 0, -131042, 0, 0, -131043, 0, 0, -131044, 0, 0, -65508, 0, 0, 28, 0, 0, 65564, 0, 0, 131100, 0, 0, 196636, 0, 0, 262172, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0, 917530, 0, 0, 917531, 0, 0, 917532, 0, 0, 131106, 0, 0, 196642, 0, 0, 262178, 0, 0, 327714, 0, 0, 393250, 0, 0, 458786, 0, 0, 524322, 0, 0, 917533, 0, 0, 917534, 0, 0, 917535, 0, 0, 917536, 0, 0, 917537, 0, 0, 917538, 0, 0, 589858, 1, 8, 655394, 1, 8, 720930, 1, 8, 786466, 1, 8, 852002, 1, 8)
+[node name="Tiles" type="Node2D" parent="Level"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Level/Tiles"]
+tile_map_data = PackedByteArray("AAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAABAP3/AQAAAAAAAAABAP7/AQAAAAAAAAAAAP7/AQAAAAAAAAD///7/AQAAAAAAAAD+//7/AQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAADAAgAAQAAAAAAAAACAAgAAQAAAAAAAAABAAgAAQAAAAAAAAAAAAgAAQAAAAAAAAD//wgAAQAAAAAAAAD+/wgAAQAAAAAAAAD9/wgAAQAAAAAAAAD8/wgAAQAAAAAAAAD7/wgAAQAAAAAAAAD6/wgAAQAAAAAAAAD5/wgAAQAAAAAAAAD4/wgAAQAAAAAAAAD3/wgAAQAAAAAAAAD3/wcAAQAAAAAAAAD2/wcAAQAAAAAAAAD2/wYAAQAAAAAAAAD1/wYAAQAAAAAAAAD1/wUAAQAAAAAAAAD1/wQAAQAAAAAAAAD0/wQAAQAAAAAAAAD0/wMAAQAAAAAAAADz/wIAAQAAAAAAAADz/wEAAQAAAAAAAADz/wAAAQAAAAAAAADz////AQAAAAAAAADz//7/AQAAAAAAAADz//3/AQAAAAAAAADz//z/AQAAAAAAAADz//v/AQAAAAAAAAD0//v/AQAAAAAAAAD0//r/AQAAAAAAAAD1//r/AQAAAAAAAAD2//r/AQAAAAAAAAD2//n/AQAAAAAAAAD3//n/AQAAAAAAAAD3//j/AQAAAAAAAAD4//j/AQAAAAAAAAD5//f/AQAAAAAAAAD6//f/AQAAAAAAAAD7//f/AQAAAAAAAAD8//f/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_gxtc1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
 environment = SubResource("Environment_oisao")
@@ -108,11 +179,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -198.0
-offset_top = -121.0
+offset_top = -137.0
 offset_right = 198.0
-offset_bottom = 121.0
+offset_bottom = 203.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
 
 [node name="Title" type="Label" parent="UI/MainMenu/VBoxContainer"]
 layout_mode = 2

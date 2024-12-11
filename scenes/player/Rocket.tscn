@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://loa31i1g71qi"]
 
 [ext_resource type="Script" path="res://scripts/Rocket.gd" id="1_t3ibr"]
+[ext_resource type="Texture2D" uid="uid://xtkx4pugycy2" path="res://assets/Rocket.svg" id="2_tyf7m"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jgvxw"]
 
@@ -12,10 +13,8 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.355357)
 colors = PackedColorArray(0.224411, 0.472297, 1, 1, 0.805547, 0.0182082, 0.430722, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rl2sv"]
-load_path = "res://.godot/imported/Neon Rocket.svg-372b77d1a8aa782dc91173b25c272ee2.ctex"
-
 [node name="Rocket" type="CharacterBody2D"]
+self_modulate = Color(1, 0.0238014, 0.48772, 1)
 position = Vector2(4, 4)
 script = ExtResource("1_t3ibr")
 
@@ -40,10 +39,10 @@ color_ramp = SubResource("Gradient_v3lv8")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-28, -37)
 scale = Vector2(0.4, 0.4)
-polygon = PackedVector2Array(7, 133, 67, 6, 126, 133, 64, 133)
+polygon = PackedVector2Array(127.5, 180, 137.5, 120, 92.5, 67.5, 67.5, -12.5, 42.5, 70, 0, 120, 7.5, 185, 65, 132.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(7, 4.76837e-07)
-rotation = 0.502195
-scale = Vector2(0.0548767, 0.0548767)
-texture = SubResource("CompressedTexture2D_rl2sv")
+position = Vector2(-1, -2)
+rotation = -0.00295618
+scale = Vector2(0.0342766, 0.0342766)
+texture = ExtResource("2_tyf7m")
