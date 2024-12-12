@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://loa31i1g71qi"]
 
 [ext_resource type="Script" path="res://scripts/Rocket.gd" id="1_t3ibr"]
-[ext_resource type="Texture2D" uid="uid://xtkx4pugycy2" path="res://assets/Rocket.svg" id="2_tyf7m"]
+[ext_resource type="Texture2D" uid="uid://ccm2m0qv1edl7" path="res://assets/RocketNew.svg" id="2_g03yr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jgvxw"]
 
@@ -10,7 +10,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_v3lv8"]
-offsets = PackedFloat32Array(0, 0.355357)
+offsets = PackedFloat32Array(0, 0.237726)
 colors = PackedColorArray(0.224411, 0.472297, 1, 1, 0.805547, 0.0182082, 0.430722, 1)
 
 [node name="Rocket" type="CharacterBody2D"]
@@ -20,7 +20,7 @@ script = ExtResource("1_t3ibr")
 
 [node name="RocketParticles" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_jgvxw")
-position = Vector2(-1, 16)
+position = Vector2(0, 24)
 amount = 120
 lifetime = 0.5
 randomness = 0.44
@@ -42,7 +42,7 @@ scale = Vector2(0.4, 0.4)
 polygon = PackedVector2Array(127.5, 180, 137.5, 120, 92.5, 67.5, 67.5, -12.5, 42.5, 70, 0, 120, 7.5, 185, 65, 132.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -2)
+position = Vector2(0, 2)
 rotation = -0.00295618
-scale = Vector2(0.0342766, 0.0342766)
-texture = ExtResource("2_tyf7m")
+scale = Vector2(0.0299624, 0.0299624)
+texture = ExtResource("2_g03yr")
