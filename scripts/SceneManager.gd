@@ -2,7 +2,9 @@ extends Node
 
 signal scene_changed(scene_name)
 
-var current_scene = null
+var main_scene: Node
+var current_scene: Node
+
 var is_transitioning := false
 
 
@@ -12,7 +14,7 @@ var scenes := {
 }
 
 func _ready() -> void:
-    current_scene = get_tree().current_scene
+    main_scene = get_node('/root/Main')
 
 func change_scene(scene_name: String) -> void:
     if is_transitioning:
@@ -29,10 +31,12 @@ func change_scene(scene_name: String) -> void:
         current_scene.queue_free()
 
     # Instantiate and add new scene
-    var new_scene = scenes[scene_name].instantiate()
-    get_tree().root.call_deferred('add_child', new_scene)
-    current_scene = new_scene
-    emit_signal('scene_changed', scene_name)
+    current_scene = scenes[scene_name].instantiate()
+    
+    main_scene.add_child(current_scene)
+    
+    
+    scene_changed.emit(scene_name)
 
     is_transitioning = false
 
