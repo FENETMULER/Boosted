@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://co7baqm7xfft1"]
+
+[ext_resource type="Theme" uid="uid://w4m5ybclqpn6" path="res://themes/MainMenuTheme.tres" id="1_e24pe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_awcvb"]
+font_size = 100
+
+[node name="MainMenu" type="CanvasLayer"]
+offset = Vector2(1, 0)
+transform = Transform2D(1, 0, 0, 1, 1, 0)
+
+[node name="MainMenuRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e24pe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuRoot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -137.0
+offset_right = 198.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Title" type="Label" parent="MainMenuRoot/VBoxContainer"]
+layout_mode = 2
+text = "Boosted"
+label_settings = SubResource("LabelSettings_awcvb")
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="MainMenuRoot/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Settings" type="Button" parent="MainMenuRoot/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MainMenuRoot/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
