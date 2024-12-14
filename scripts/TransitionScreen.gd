@@ -13,14 +13,9 @@ func _on_animation_finished(animation_name: String) -> void:
 	if animation_name == 'fade_in':
 		animation_player.play('fade_out')
 	else:
-		print('Animation finished')
 		transition_finished.emit()
 		color_rect.visible = false
-		print('Animation Ended')
 
 func show_transition() -> void:
-	print('transition started')
 	color_rect.visible = true
-	print('rect visible')
 	animation_player.play('fade_in')
-	print('Animation played')

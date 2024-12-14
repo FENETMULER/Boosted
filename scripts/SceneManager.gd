@@ -33,8 +33,9 @@ func change_scene(scene_name: String) -> void:
     # Instantiate and add new scene
     current_scene = scenes[scene_name].instantiate()
 
-    TransitionScreen.show_transition()
-    await TransitionScreen.transition_finished
+    if not scene_name == 'main_menu':
+        TransitionScreen.show_transition()
+        await TransitionScreen.transition_finished
     
     main_scene.add_child(current_scene)
     scene_changed.emit(scene_name)
