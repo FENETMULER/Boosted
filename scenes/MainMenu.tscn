@@ -61,3 +61,4 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Play" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
