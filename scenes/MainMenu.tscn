@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://co7baqm7xfft1"]
+[gd_scene load_steps=4 format=3 uid="uid://co7baqm7xfft1"]
 
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_aam74"]
 [ext_resource type="Theme" uid="uid://w4m5ybclqpn6" path="res://themes/MainMenuTheme.tres" id="1_e24pe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_awcvb"]
@@ -8,8 +9,9 @@ font_size = 100
 [node name="MainMenu" type="CanvasLayer"]
 offset = Vector2(1, 0)
 transform = Transform2D(1, 0, 0, 1, 1, 0)
+script = ExtResource("1_aam74")
 
-[node name="MainMenuRoot" type="Control" parent="."]
+[node name="MainMenuWrapper" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_e24pe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuRoot"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuWrapper"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,20 +42,22 @@ grow_vertical = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Title" type="Label" parent="MainMenuRoot/VBoxContainer"]
+[node name="Title" type="Label" parent="MainMenuWrapper/VBoxContainer"]
 layout_mode = 2
 text = "Boosted"
 label_settings = SubResource("LabelSettings_awcvb")
 horizontal_alignment = 1
 
-[node name="Play" type="Button" parent="MainMenuRoot/VBoxContainer"]
+[node name="Play" type="Button" parent="MainMenuWrapper/VBoxContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="Settings" type="Button" parent="MainMenuRoot/VBoxContainer"]
+[node name="Settings" type="Button" parent="MainMenuWrapper/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 
-[node name="Quit" type="Button" parent="MainMenuRoot/VBoxContainer"]
+[node name="Quit" type="Button" parent="MainMenuWrapper/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Play" to="." method="_on_play_button_pressed"]
