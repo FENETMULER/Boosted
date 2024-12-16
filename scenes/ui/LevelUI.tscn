@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://dm4j4hg71vece"]
+
+[ext_resource type="Texture2D" uid="uid://dar876r6oyxcq" path="res://assets/left_arrow.png" id="1_2jrwo"]
+[ext_resource type="FontFile" uid="uid://cq1tsomxbci4y" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_p12hf"]
+[ext_resource type="Texture2D" uid="uid://dmkt36saxx75n" path="res://assets/right_arrow.png" id="2_vwu7u"]
+[ext_resource type="Texture2D" uid="uid://dixk6c7dl82nx" path="res://assets/restart button.png" id="3_45vl2"]
+[ext_resource type="Texture2D" uid="uid://b843fyu0xg6pu" path="res://assets/up_arrow.png" id="4_w5asm"]
+
+[sub_resource type="Theme" id="Theme_jg0v8"]
+Label/fonts/font = ExtResource("1_p12hf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqof6"]
+font_size = 55
+font_color = Color(0.466667, 0.466667, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6mes"]
+font_size = 51
+
+[node name="LevelUI" type="CanvasLayer"]
+
+[node name="LevelUIWrapper" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.008
+anchor_bottom = 1.006
+offset_right = -0.23999
+offset_bottom = -0.320007
+grow_horizontal = 2
+theme = SubResource("Theme_jg0v8")
+
+[node name="Label" type="Label" parent="LevelUIWrapper"]
+layout_mode = 1
+offset_left = 84.0
+offset_top = 24.0
+offset_right = 261.0
+offset_bottom = 147.0
+text = "15.66"
+label_settings = SubResource("LabelSettings_fqof6")
+
+[node name="CurrentBestValue" type="Label" parent="LevelUIWrapper"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_top = 25.0
+offset_right = -57.0
+offset_bottom = 95.0
+grow_horizontal = 0
+text = "29.30"
+label_settings = SubResource("LabelSettings_d6mes")
+
+[node name="CurrentBestText" type="Label" parent="LevelUIWrapper"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -510.0
+offset_top = 20.0
+offset_right = -143.0
+offset_bottom = 103.0
+grow_horizontal = 0
+text = "Current Best: "
+label_settings = SubResource("LabelSettings_fqof6")
+
+[node name="LeftButtonContainer" type="Control" parent="LevelUIWrapper"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 115.0
+offset_top = -176.0
+offset_right = 155.0
+offset_bottom = -136.0
+grow_vertical = 0
+
+[node name="LeftButton" type="TouchScreenButton" parent="LevelUIWrapper/LeftButtonContainer"]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(-69, -75)
+scale = Vector2(1.0365, 1.0365)
+texture_normal = ExtResource("1_2jrwo")
+passby_press = true
+action = "rotate_left"
+
+[node name="RightButtonContainer" type="Control" parent="LevelUIWrapper"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 335.0
+offset_top = -182.0
+offset_right = 375.0
+offset_bottom = -142.0
+grow_vertical = 0
+
+[node name="RightButton" type="TouchScreenButton" parent="LevelUIWrapper/RightButtonContainer"]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(-66, -68)
+scale = Vector2(1.05839, 1.05839)
+texture_normal = ExtResource("2_vwu7u")
+passby_press = true
+action = "rotate_right"
+
+[node name="RestartButtonContainer" type="Control" parent="LevelUIWrapper"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 555.0
+offset_top = -183.0
+offset_right = 595.0
+offset_bottom = -143.0
+grow_vertical = 0
+
+[node name="RestartButton" type="TouchScreenButton" parent="LevelUIWrapper/RestartButtonContainer"]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(-69, -75)
+scale = Vector2(1.13017, 1.09583)
+texture_normal = ExtResource("3_45vl2")
+
+[node name="UpButtonContainer" type="Control" parent="LevelUIWrapper"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1044.0
+offset_top = 506.0
+offset_right = 1084.0
+offset_bottom = 546.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="UpButton" type="TouchScreenButton" parent="LevelUIWrapper/UpButtonContainer"]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(-1321, -754)
+scale = Vector2(1.10219, 1.10219)
+texture_normal = ExtResource("4_w5asm")
+passby_press = true
+action = "boost"

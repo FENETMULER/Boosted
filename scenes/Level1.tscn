@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://loa31i1g71qi" path="res://scenes/player/Rocket.tscn" id="1_s8dgc"]
 [ext_resource type="Texture2D" uid="uid://8kbvg0ijhkng" path="res://assets/wall.png" id="2_s3u45"]
-[ext_resource type="PackedScene" uid="uid://dm4j4hg71vece" path="res://scenes/ui/PlayerControls.tscn" id="3_p5tnj"]
+[ext_resource type="PackedScene" uid="uid://dm4j4hg71vece" path="res://scenes/ui/LevelUI.tscn" id="3_p5tnj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ku8em"]
 friction = 0.24
@@ -54,8 +54,6 @@ environment = SubResource("Environment_waq8w")
 position = Vector2(997, 312.5)
 shape = SubResource("RectangleShape2D_l6yhy")
 
-[node name="PlayerControls" parent="." instance=ExtResource("3_p5tnj")]
+[node name="LevelUI" parent="." instance=ExtResource("3_p5tnj")]
 
-[connection signal="pressed" from="PlayerControls/RestartButtonContainer/RestartButton" to="Rocket" method="_on_restart_button_pressed"]
-
-[editable path="PlayerControls"]
+[editable path="LevelUI"]
