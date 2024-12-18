@@ -1,14 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://biw41hwcecv7h"]
 
 [ext_resource type="Texture2D" uid="uid://cod6igy6x763y" path="res://assets/PUURPE track screenshot.png" id="1_or6tb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_giqac"]
-border_color = Color(0.597222, 0.00785864, 0.496872, 1)
-shadow_color = Color(0.368627, 0.00392157, 0.870588, 1)
-shadow_offset = Vector2(4, 4)
+[ext_resource type="Theme" uid="uid://nyf8024xqtbt" path="res://themes/TrackContainerButton.tres" id="2_0d6ad"]
 
 [sub_resource type="Theme" id="Theme_umymu"]
-Panel/styles/panel = SubResource("StyleBoxFlat_giqac")
+Label/colors/font_color = Color(0.608666, 0, 0.83, 1)
+Label/font_sizes/font_size = 30
+Label/fonts/font = null
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8naw"]
 bg_color = Color(0.418645, 0.00170075, 0.66409, 1)
@@ -69,6 +67,7 @@ size_flags_horizontal = 3
 
 [node name="Best" type="Label" parent="MarginContainer/VBoxContainer/Labels"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Best: 15.66"
 horizontal_alignment = 2
 
@@ -79,10 +78,11 @@ size_flags_vertical = 3
 [node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme = ExtResource("2_0d6ad")
+theme_override_constants/separation = 8
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Play"
 
 [node name="Leaderboard" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
