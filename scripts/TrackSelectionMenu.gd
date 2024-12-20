@@ -67,6 +67,11 @@ func _ready():
 	
 	# Set initial positions
 	update_carousel()
+func _physics_process(_delta) -> void:
+	if Input.is_action_just_pressed('left_button'):
+		previous_item()
+	if Input.is_action_just_pressed('right_button'):
+		next_item()
 
 func update_carousel():
 	for i in range(items.size()):
@@ -105,6 +110,8 @@ func update_carousel():
 		var target_alpha = 1.0 if distance <= 1 else 0.5
 		tween.tween_property(item, "modulate:a", target_alpha, transition_time)
 		carousel_changed.emit(current_index)
+
+
 
 func next_item():
 	if current_index < items.size() - 1:

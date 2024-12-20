@@ -56,4 +56,10 @@ shape = SubResource("RectangleShape2D_l6yhy")
 
 [node name="LevelUI" parent="." instance=ExtResource("3_8a4lf")]
 
+[node name="LeftButton" parent="LevelUI/LevelUIWrapper/LeftButtonContainer" index="0"]
+action = "left_button"
+
+[node name="RightButton" parent="LevelUI/LevelUIWrapper/RightButtonContainer" index="0"]
+action = "right_button"
+
 [editable path="LevelUI"]
