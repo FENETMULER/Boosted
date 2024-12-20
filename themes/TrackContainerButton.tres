@@ -1,13 +1,13 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://nyf8024xqtbt"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://nyf8024xqtbt"]
 
 [ext_resource type="FontFile" uid="uid://cq1tsomxbci4y" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_ciqqn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw57m"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj6ne"]
 content_margin_left = 40.0
 content_margin_top = 15.0
 content_margin_right = 40.0
 content_margin_bottom = 15.0
-bg_color = Color(0.2, 0, 0.972549, 1)
+bg_color = Color(1, 0.501961, 0, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -18,7 +18,26 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw57m"]
+content_margin_left = 40.0
+content_margin_top = 15.0
+content_margin_right = 40.0
+content_margin_bottom = 15.0
+bg_color = Color(0.2, 0, 0.972549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.194, 0, 0.97, 0.839216)
+shadow_size = 6
+
 [resource]
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_ciqqn")
+Button/styles/hover = SubResource("StyleBoxFlat_kj6ne")
 Button/styles/normal = SubResource("StyleBoxFlat_kw57m")

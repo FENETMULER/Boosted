@@ -3,11 +3,13 @@ extends Control
 
 
 @onready var carousel_container = $CarouselContainer
+signal carousel_changed(index)
+
 var items = []
 var current_index = 0
 
 # Configuration
-var spacing = 700
+var spacing = 800
 var center_scale = Vector2(1.2, 1.2)
 var side_scale = Vector2(0.8, 0.8)
 var transition_time = 0.3
@@ -21,7 +23,8 @@ func _ready():
     # Initialize each item
     for item in items:
         # Set the pivot point to center
-        item.custom_minimum_size = Vector2(600, 300)
+        # item.custom_minimum_size = Vector2(600, 300)
+        item.size = Vector2(600,320)
         
         # item.pivot_offset = item.size / 2
         # Start all items at normal scale
@@ -69,6 +72,7 @@ func update_carousel():
         var distance = abs(relative_index)
         var target_alpha = 1.0 if distance <= 1 else 0.5
         tween.tween_property(item, "modulate:a", target_alpha, transition_time)
+        carousel_changed.emit(current_index)
 
 func next_item():
     if current_index < items.size() - 1:
