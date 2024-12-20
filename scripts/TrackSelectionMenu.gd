@@ -67,7 +67,7 @@ func _ready():
 	
 	# Set initial positions
 	update_carousel()
-func _physics_process(_delta) -> void:
+func _process(_delta) -> void:
 	if Input.is_action_just_pressed('left_button'):
 		previous_item()
 	if Input.is_action_just_pressed('right_button'):
