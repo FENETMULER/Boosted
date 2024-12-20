@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnont4ah22rn4"]
+[gd_scene load_steps=7 format=3 uid="uid://dnont4ah22rn4"]
 
 [ext_resource type="Script" path="res://scripts/TrackSelectionMenu.gd" id="1_btv2n"]
 [ext_resource type="Texture2D" uid="uid://ds3usxld4lbwu" path="res://assets/arrow_left.png" id="1_eohgp"]
 [ext_resource type="Theme" uid="uid://yyj0mbmaif5g" path="res://themes/TrackSelectionMenu.tres" id="1_wo6f7"]
 [ext_resource type="Texture2D" uid="uid://cisbr37tln45m" path="res://assets/arrow_right.png" id="2_jlf1q"]
-[ext_resource type="PackedScene" uid="uid://biw41hwcecv7h" path="res://scenes/TrackContainer.tscn" id="3_qqvau"]
 [ext_resource type="Script" path="res://scripts/DotIndicatorsWrapper.gd" id="6_c8raw"]
 [ext_resource type="Theme" uid="uid://rcqyoft40qwn" path="res://themes/DotIndicator.tres" id="6_e1wgb"]
 
@@ -51,27 +50,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TrackContainer" parent="CarouselContainer" instance=ExtResource("3_qqvau")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-
-[node name="TrackContainer2" parent="CarouselContainer" instance=ExtResource("3_qqvau")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-
-[node name="TrackContainer3" parent="CarouselContainer" instance=ExtResource("3_qqvau")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-
 [node name="SelectionMarker" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
+layout_mode = 3
 anchors_preset = 0
 offset_left = 626.0
 offset_top = 341.0

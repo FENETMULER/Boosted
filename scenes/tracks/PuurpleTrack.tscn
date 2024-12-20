@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://dkocreps4n3r6"]
 
-[ext_resource type="PackedScene" uid="uid://loa31i1g71qi" path="res://scenes/player/Rocket.tscn" id="1_s8dgc"]
-[ext_resource type="Texture2D" uid="uid://8kbvg0ijhkng" path="res://assets/wall.png" id="2_s3u45"]
-[ext_resource type="PackedScene" uid="uid://dm4j4hg71vece" path="res://scenes/ui/LevelUI.tscn" id="3_p5tnj"]
+[ext_resource type="PackedScene" uid="uid://loa31i1g71qi" path="res://scenes/player/Rocket.tscn" id="1_3jyb0"]
+[ext_resource type="Texture2D" uid="uid://8kbvg0ijhkng" path="res://assets/wall.png" id="2_sbuke"]
+[ext_resource type="PackedScene" uid="uid://dm4j4hg71vece" path="res://scenes/ui/LevelUI.tscn" id="3_8a4lf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ku8em"]
 friction = 0.24
@@ -10,7 +10,7 @@ rough = true
 bounce = 0.66
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7u47u"]
-texture = ExtResource("2_s3u45")
+texture = ExtResource("2_sbuke")
 margins = Vector2i(3, 3)
 texture_region_size = Vector2i(22, 22)
 0:0/0 = 0
@@ -30,7 +30,7 @@ size = Vector2(26, 121)
 
 [node name="Level1" type="Node2D"]
 
-[node name="Rocket" parent="." instance=ExtResource("1_s8dgc")]
+[node name="Rocket" parent="." instance=ExtResource("1_3jyb0")]
 position = Vector2(-461, -258)
 
 [node name="Camera2D" type="Camera2D" parent="Rocket"]
@@ -54,6 +54,6 @@ environment = SubResource("Environment_waq8w")
 position = Vector2(997, 312.5)
 shape = SubResource("RectangleShape2D_l6yhy")
 
-[node name="LevelUI" parent="." instance=ExtResource("3_p5tnj")]
+[node name="LevelUI" parent="." instance=ExtResource("3_8a4lf")]
 
 [editable path="LevelUI"]

@@ -9,39 +9,36 @@ var is_transitioning := false
 
 
 var scenes := {
-    "main_menu": preload("res://scenes/MainMenu.tscn"),
-    "level": preload("res://scenes/Level1.tscn")
+	'main_menu': preload('res://scenes/MainMenu.tscn'),
+	'track_selection_menu': preload('res://scenes/TrackSelectionMenu.tscn'),
+	'puurple': preload('res://scenes/tracks/PuurpleTrack.tscn'),
 }
 
 func _ready() -> void:
-    main_scene = get_node('/root/Main')
+	main_scene = get_node('/root/Main')
 
 func change_scene(scene_name: String) -> void:
-    if is_transitioning:
-        return
-    if not scenes.has(scene_name):
-        push_error("Scene $s not found" % scene_name)
-        return
-    
-    is_transitioning = false
+	if is_transitioning:
+		return
+	if not scenes.has(scene_name):
+		push_error("Scene '%s' not found" % scene_name)
+		return
 
-    # If the above aren't true, show transitions
+	is_transitioning = false
 
-    if current_scene:
-        current_scene.queue_free()
+	# If the above aren't true, show transitions
 
-    # Instantiate and add new scene
-    current_scene = scenes[scene_name].instantiate()
+	if current_scene:
+		current_scene.queue_free()
 
-    if not scene_name == 'main_menu':
-        TransitionScreen.show_transition()
-        await TransitionScreen.transition_finished
-    
-    main_scene.add_child(current_scene)
-    scene_changed.emit(scene_name)
+	# Instantiate and add new scene
+	current_scene = scenes[scene_name].instantiate()
 
-    is_transitioning = false
+	if not scene_name == 'main_menu':
+		TransitionScreen.show_transition()
+		await TransitionScreen.transition_finished
+	
+	main_scene.add_child(current_scene)
+	scene_changed.emit(scene_name)
 
-func play_transition_animation() -> void:
-    # Transition logic goes here
-    pass
+	is_transitioning = false
