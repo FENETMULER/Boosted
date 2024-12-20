@@ -73,6 +73,7 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed('right_button'):
 		next_item()
 
+
 func update_carousel():
 	for i in range(items.size()):
 		var item = items[i]

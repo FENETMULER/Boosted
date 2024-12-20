@@ -11,9 +11,9 @@ func _ready():
 	particles = $RocketParticles
 func _physics_process(delta):
 	
-	if Input.is_action_pressed("rotate_left"):
+	if Input.is_action_pressed("left_button"):
 		rotate_left(delta)
-	if Input.is_action_pressed("rotate_right"):
+	if Input.is_action_pressed("right_button"):
 		rotate_right(delta)
 	if Input.is_action_pressed("boost"):
 		apply_boost()

@@ -79,7 +79,7 @@ position = Vector2(-69, -75)
 scale = Vector2(1.0365, 1.0365)
 texture_normal = ExtResource("1_2jrwo")
 passby_press = true
-action = "rotate_left"
+action = "left_button"
 
 [node name="RightButtonContainer" type="Control" parent="LevelUIWrapper"]
 layout_mode = 1
@@ -98,7 +98,7 @@ position = Vector2(-66, -68)
 scale = Vector2(1.05839, 1.05839)
 texture_normal = ExtResource("2_vwu7u")
 passby_press = true
-action = "rotate_right"
+action = "right_button"
 
 [node name="RestartButtonContainer" type="Control" parent="LevelUIWrapper"]
 layout_mode = 1
