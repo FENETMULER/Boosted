@@ -1,9 +1,29 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://w4m5ybclqpn6"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://w4m5ybclqpn6"]
 
 [ext_resource type="FontFile" uid="uid://cq1tsomxbci4y" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_b42w7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o6k8"]
+content_margin_left = 160.0
+content_margin_top = 15.0
+content_margin_right = 160.0
+content_margin_bottom = 15.0
+bg_color = Color(0, 0.666667, 0.85098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.831604, 0.304688, 1, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.597667, 0.29, 1, 0.768627)
+shadow_size = 7
 
 [resource]
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_b42w7")
+Button/styles/normal = SubResource("StyleBoxFlat_2o6k8")
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_b42w7")
