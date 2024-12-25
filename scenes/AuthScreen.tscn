@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ayer36frqu1"]
+
+[ext_resource type="Script" path="res://scripts/AuthScreen.gd" id="1_nmico"]
+
+[node name="AuthScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nmico")
+
+[node name="ErrorLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SignupContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 104.0
+offset_bottom = 99.0
+
+[node name="UsernameInput" type="LineEdit" parent="SignupContainer"]
+layout_mode = 0
+offset_left = 796.0
+offset_top = 239.0
+offset_right = 1003.0
+offset_bottom = 270.0
+placeholder_text = "Username"
+
+[node name="PasswordInput" type="LineEdit" parent="SignupContainer"]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 289.0
+offset_right = 1004.0
+offset_bottom = 320.0
+placeholder_text = "Password"
+
+[node name="CountrySelector" type="OptionButton" parent="SignupContainer"]
+layout_mode = 0
+offset_left = 802.0
+offset_top = 338.0
+offset_right = 1002.0
+offset_bottom = 367.0
+
+[node name="CreateButton" type="Button" parent="SignupContainer"]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 407.0
+offset_right = 910.0
+offset_bottom = 438.0
+text = "Create"
+
+[node name="GotoSigninButton" type="Button" parent="SignupContainer"]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 454.0
+offset_right = 912.0
+offset_bottom = 485.0
+text = "Sign In"
+
+[node name="SigninContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UsernameInput" type="LineEdit" parent="SigninContainer"]
+layout_mode = 0
+offset_left = 884.0
+offset_top = 305.0
+offset_right = 1048.0
+offset_bottom = 336.0
+placeholder_text = "Username"
+
+[node name="PasswordInput" type="LineEdit" parent="SigninContainer"]
+layout_mode = 0
+offset_left = 886.0
+offset_top = 347.0
+offset_right = 1050.0
+offset_bottom = 378.0
+placeholder_text = "Password"
+
+[node name="SigninButton" type="Button" parent="SigninContainer"]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 405.0
+offset_right = 989.0
+offset_bottom = 436.0
+text = "Sign In"
+
+[node name="GotoSignupButton" type="Button" parent="SigninContainer"]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 449.0
+offset_right = 994.0
+offset_bottom = 480.0
+text = "Sign up"
+
+[connection signal="pressed" from="SignupContainer/CreateButton" to="." method="_on_signup_button_pressed"]
+[connection signal="pressed" from="SignupContainer/GotoSigninButton" to="." method="_on_goto_signin_button_pressed"]
+[connection signal="pressed" from="SigninContainer/SigninButton" to="." method="_on_signin_button_pressed"]
+[connection signal="pressed" from="SigninContainer/GotoSignupButton" to="." method="_on_goto_signup_button_pressed"]
