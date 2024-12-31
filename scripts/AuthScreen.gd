@@ -1,4 +1,3 @@
-# AuthScreen.gd
 extends Control
 
 @onready var auth_manager = AuthManager
@@ -105,8 +104,7 @@ func _validate_signup_fields() -> bool:
 # Response handlers
 func _on_auth_success():
     print("Authentication successful!")
-    # Change to game scene or whatever comes next
-    get_tree().change_scene_to_file("res://scenes/game.tscn")
+    SceneManager.change_scene("track_selection_menu")
 
 func _on_auth_failed(error_message):
     _show_error(error_message)
