@@ -72,5 +72,16 @@ text = "Settings"
 layout_mode = 2
 text = "Quit"
 
+[node name="Username" type="Label" parent="MainMenuWrapper"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -115.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = 36.0
+grow_horizontal = 0
+
 [connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Play" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
