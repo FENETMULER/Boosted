@@ -10,6 +10,7 @@ var is_transitioning := false
 
 var scenes := {
 	'main_menu': preload('res://scenes/MainMenu.tscn'),
+	'auth_screen': preload('res://scenes/AuthScreen.tscn'),
 	'track_selection_menu': preload('res://scenes/TrackSelectionMenu.tscn'),
 	'puurple': preload('res://scenes/tracks/PuurpleTrack.tscn'),
 }
