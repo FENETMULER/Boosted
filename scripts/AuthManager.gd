@@ -11,6 +11,7 @@ var id_token = ""
 var refresh_token = ""
 var username = ""
 var is_authenticated = false
+var is_loading = false
 
 var current_request_type = ""
 @onready var auth_request = HTTPRequest.new()
@@ -21,7 +22,14 @@ func _ready():
 	# Try to restore session on startup
 	_restore_session()
 
+func _process(delta):
+	if is_loading:
+		LoadingScreen.visible = true
+	else:
+		LoadingScreen.visible = false
+
 func _restore_session():
+	is_loading = true
 	if FileAccess.file_exists("user://auth_session.save"):
 		var file = FileAccess.open("user://auth_session.save", FileAccess.READ)
 		var json = JSON.new()
@@ -32,13 +40,11 @@ func _restore_session():
 		file.close()
 		
 		if save_data and save_data.has("id_token"):
-
 			print('-------------restoring session-------------')
 			access_token = save_data.get("access_token", "")
 			id_token = save_data.get("id_token", "")
 			refresh_token = save_data.get("refresh_token", "")
 			username = save_data.get("username", "")
-			
 			
 			# Validate the session
 			_validate_session()
@@ -49,6 +55,7 @@ func _restore_session():
 	return false
 
 func sign_up(new_username: String, password: String, country: String):
+	is_loading = true
 	username = new_username
 	
 	var data = {
@@ -65,9 +72,9 @@ func sign_up(new_username: String, password: String, country: String):
 		HTTPClient.METHOD_POST,
 		JSON.stringify(data)
 	)
-	
 
 func sign_in(username_: String, password: String):
+	is_loading = true
 	username = username_
 	
 	var data = {
@@ -85,6 +92,7 @@ func sign_in(username_: String, password: String):
 	)
 
 func _validate_session():
+	is_loading = true
 	if access_token.is_empty():
 		is_authenticated = false
 		auth_state_changed.emit(false)
@@ -104,7 +112,6 @@ func _validate_session():
 	)
 
 func _on_auth_request_completed(_result, response_code, _headers, body):
-	
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
@@ -132,12 +139,13 @@ func _on_auth_request_completed(_result, response_code, _headers, body):
 		_: # Other errors
 			print('-----------unknown error------------')
 			var error_message = "Unknown error"
-			if response.has("message"):
+			if response and response.has("message"):
 				error_message = response.message
 			
 			is_authenticated = false
 			auth_failed.emit(error_message)
 			auth_state_changed.emit(false)
+	is_loading = false
 
 func _save_user_session():
 	var save_data = {
@@ -151,6 +159,7 @@ func _save_user_session():
 	file.close()
 
 func _refresh_token():
+	is_loading = true
 	if refresh_token.is_empty():
 		sign_out()
 		return
@@ -178,6 +187,8 @@ func sign_out():
 	is_authenticated = false
 	
 	if FileAccess.file_exists("user://auth_session.save"):
-		DirAccess.remove_absolute("user://auth_session.save")
+		var dir = DirAccess.open("user://")
+		if dir:
+			dir.remove("auth_session.save")
 	
 	auth_state_changed.emit(false)

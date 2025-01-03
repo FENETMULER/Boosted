@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1ua4xlyrsqok"]
+[gd_scene load_steps=6 format=3 uid="uid://d1ua4xlyrsqok"]
 
 [ext_resource type="Texture2D" uid="uid://8kbvg0ijhkng" path="res://assets/wall.png" id="1_k8mas"]
+[ext_resource type="Script" path="res://scripts/LoadingScreen.gd" id="1_lvcnh"]
 
 [sub_resource type="Animation" id="Animation_rwp0e"]
 resource_name = "loading_animation"
@@ -134,9 +135,9 @@ tracks/11/path = NodePath("Control/Sprite2D3:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.76667, 2.23333)
 }
 
 [sub_resource type="Animation" id="Animation_4gvwo"]
@@ -281,6 +282,8 @@ _data = {
 }
 
 [node name="LoadingScreen" type="CanvasLayer"]
+layer = 4
+script = ExtResource("1_lvcnh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -288,13 +291,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15, 0.15, 0.15, 0.6)
+color = Color(0.15, 0.15, 0.15, 0.890196)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = 4.0
+offset_right = -33.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
 position = Vector2(504, 293)
@@ -321,3 +332,4 @@ libraries = {
 "": SubResource("AnimationLibrary_0vx8o")
 }
 autoplay = "loading_animation"
+speed_scale = 1.7

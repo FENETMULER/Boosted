@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+LoadingScreen="*res://scenes/LoadingScreen.tscn"
 SceneManager="*res://scripts/SceneManager.gd"
 TransitionScreen="*res://scenes/TransitionScreen.tscn"
 AuthManager="*res://scripts/AuthManager.gd"
