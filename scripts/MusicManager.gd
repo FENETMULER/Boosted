@@ -15,7 +15,7 @@ func play_music(audio_path: String):
     current_track = audio_path
     var stream = load(audio_path)
     music_player.stream = stream
-    
+    music_player.play()
 func stop_music():
     music_player.stop()
     

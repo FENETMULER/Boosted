@@ -11,6 +11,7 @@ func _ready():
 	auth_manager.auth_success.connect(_on_auth_success)
 	auth_manager.auth_failed.connect(_on_auth_failed)
 	auth_manager.auth_state_changed.connect(_on_auth_state_changed)
+	MusicManager.play_music("res://assets/audio/music/main_menu.wav")
 	
 	# # Hide auth screen initially
 	# if auth_screen:

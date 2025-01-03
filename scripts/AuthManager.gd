@@ -22,7 +22,7 @@ func _ready():
 	# Try to restore session on startup
 	_restore_session()
 
-func _process(delta):
+func _process(_delta):
 	if is_loading:
 		LoadingScreen.visible = true
 	else:

@@ -21,6 +21,7 @@ LoadingScreen="*res://scenes/LoadingScreen.tscn"
 SceneManager="*res://scripts/SceneManager.gd"
 TransitionScreen="*res://scenes/TransitionScreen.tscn"
 AuthManager="*res://scripts/AuthManager.gd"
+MusicManager="*res://scripts/MusicManager.gd"
 
 [display]
 
