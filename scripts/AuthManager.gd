@@ -130,12 +130,16 @@ func _on_auth_request_completed(_result, response_code, _headers, body):
 			_save_user_session()
 			auth_success.emit()
 			auth_state_changed.emit(true)
+			is_loading = false
+			
 			
 		401: # Unauthorized - try refresh
 			print('-----------token invalid------------')
 			if current_request_type != "refresh":
 				_refresh_token()
-			
+				return
+			else:
+				is_loading = false
 		_: # Other errors
 			print('-----------unknown error------------')
 			var error_message = "Unknown error"
@@ -145,7 +149,8 @@ func _on_auth_request_completed(_result, response_code, _headers, body):
 			is_authenticated = false
 			auth_failed.emit(error_message)
 			auth_state_changed.emit(false)
-	is_loading = false
+			is_loading = false
+	
 
 func _save_user_session():
 	var save_data = {
