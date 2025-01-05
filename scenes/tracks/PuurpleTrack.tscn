@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://dkocreps4n3r6"]
+[gd_scene load_steps=12 format=4 uid="uid://dkocreps4n3r6"]
 
 [ext_resource type="PackedScene" uid="uid://loa31i1g71qi" path="res://scenes/player/Rocket.tscn" id="1_3jyb0"]
+[ext_resource type="Script" path="res://scripts/PuurpleTrack.gd" id="1_cm0c5"]
 [ext_resource type="Texture2D" uid="uid://8kbvg0ijhkng" path="res://assets/wall.png" id="2_sbuke"]
 [ext_resource type="PackedScene" uid="uid://dm4j4hg71vece" path="res://scenes/ui/LevelUI.tscn" id="3_8a4lf"]
 [ext_resource type="Texture2D" uid="uid://biroc2hq4dtsn" path="res://assets/finish_line_square.png" id="3_pbxng"]
@@ -33,9 +34,14 @@ sources/1 = SubResource("TileSetAtlasSource_2v73i")
 [sub_resource type="Environment" id="Environment_waq8w"]
 glow_enabled = true
 
-[node name="Level1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4fxh"]
+size = Vector2(160, 42)
 
-[node name="Rocket" parent="." instance=ExtResource("1_3jyb0")]
+[node name="PuurpleTrack" type="Node2D"]
+script = ExtResource("1_cm0c5")
+
+[node name="Rocket" parent="." groups=["player"] instance=ExtResource("1_3jyb0")]
+z_index = 1
 position = Vector2(-461, -258)
 
 [node name="Camera2D" type="Camera2D" parent="Rocket"]
@@ -54,5 +60,14 @@ tile_set = SubResource("TileSet_ufiqb")
 environment = SubResource("Environment_waq8w")
 
 [node name="LevelUI" parent="." instance=ExtResource("3_8a4lf")]
+
+[node name="RestartButton" parent="LevelUI/LevelUIWrapper/RestartButtonContainer" index="0"]
+action = "reset_track"
+
+[node name="FinishLine" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
+position = Vector2(561, 340)
+shape = SubResource("RectangleShape2D_g4fxh")
 
 [editable path="LevelUI"]

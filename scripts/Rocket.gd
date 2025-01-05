@@ -24,8 +24,7 @@ func _physics_process(delta):
 		particles.emitting = true
 	velocity *= drag
 	move_and_slide()
-	#if (get_slide_collision_count() > 0):
-		#print('game over')
+	
 	
 func rotate_left(delta):
 	rotation -= rotation_speed * delta
@@ -37,7 +36,7 @@ func apply_boost():
 	velocity += Vector2.UP.rotated(rotation) * boost_force
 	
 
-func _on_restart_button_pressed() -> void:
+func reset_position() -> void:
 	position.x = -461
 	position.y = -258
 	velocity = Vector2(0, 0)
