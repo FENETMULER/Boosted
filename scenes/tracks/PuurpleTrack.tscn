@@ -45,7 +45,7 @@ z_index = 1
 position = Vector2(-461, -258)
 
 [node name="Camera2D" type="Camera2D" parent="Rocket"]
-zoom = Vector2(1.15, 1.15)
+zoom = Vector2(1.3, 1.3)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_speed = 0.0

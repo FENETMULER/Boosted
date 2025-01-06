@@ -33,8 +33,8 @@ func setup_track():
     # track_name_label.text = track_name
 
 func _on_player_started_moving():
-    print('-----player started moving----')
     if !is_race_started:
+        print('-----player started moving----')
         timer.start()
         is_race_started = true
 
@@ -50,7 +50,6 @@ func update_timer_display():
 func _on_finish_line_body_entered(body):
     if body.is_in_group("player") and is_race_started:
         timer.stop()
-        is_race_started = false
         print('track completed!')
         # show_completion_popup()
 
@@ -70,5 +69,6 @@ func _on_finish_line_body_entered(body):
 
 func reset_track():
     timer.stop()
+    is_race_started = false
     setup_track()
     $Rocket.reset_position()
