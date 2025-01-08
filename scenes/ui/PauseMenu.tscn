@@ -26,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14, 0.14, 0.14, 0.737255)
 
-[node name="PauseMenuPanel" type="Panel" parent="."]
+[node name="PauseMenuWrapper" type="Panel" parent="."]
 self_modulate = Color(0.533333, 0.180392, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -40,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hej04")
 
-[node name="PlayButton" type="Button" parent="PauseMenuPanel"]
+[node name="PlayButton" type="Button" parent="PauseMenuWrapper"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -52,7 +52,7 @@ offset_bottom = 164.0
 grow_horizontal = 2
 text = "Play"
 
-[node name="LeaderboardButton" type="Button" parent="PauseMenuPanel"]
+[node name="LeaderboardButton" type="Button" parent="PauseMenuWrapper"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -64,7 +64,7 @@ offset_bottom = 35.0
 grow_vertical = 2
 text = "Leaderboard"
 
-[node name="MainMenuButton" type="Button" parent="PauseMenuPanel"]
+[node name="MainMenuButton" type="Button" parent="PauseMenuWrapper"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -79,7 +79,7 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "MainMenu"
 
-[node name="TracksButton" type="Button" parent="PauseMenuPanel"]
+[node name="TracksButton" type="Button" parent="PauseMenuWrapper"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.498
@@ -94,7 +94,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Tracks"
 
-[node name="BestTimeLabel" type="Label" parent="PauseMenuPanel"]
+[node name="BestTimeLabel" type="Label" parent="PauseMenuWrapper"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -106,6 +106,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 text = "Best: 12.3"
 
-[connection signal="pressed" from="PauseMenuPanel/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="PauseMenuPanel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PauseMenuPanel/TracksButton" to="." method="_on_tracks_button_pressed"]
+[connection signal="pressed" from="PauseMenuWrapper/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PauseMenuWrapper/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="PauseMenuWrapper/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PauseMenuWrapper/TracksButton" to="." method="_on_tracks_button_pressed"]
