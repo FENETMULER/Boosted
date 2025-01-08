@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LoadingScreen="*res://scenes/LoadingScreen.tscn"
 SceneManager="*res://scripts/SceneManager.gd"
 TransitionScreen="*res://scenes/TransitionScreen.tscn"
 AuthManager="*res://scripts/AuthManager.gd"
 MusicManager="*res://scripts/MusicManager.gd"
+OverlayManager="*res://scenes/ui/OverlayManager.tscn"
+LoadingScreen="*res://scenes/LoadingScreen.tscn"
 DerivativeClass="*res://scripts/DerivativeClass.gd"
 
 [display]

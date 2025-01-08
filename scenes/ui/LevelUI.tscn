@@ -109,3 +109,11 @@ scale = Vector2(1.10219, 1.10219)
 texture_normal = ExtResource("4_w5asm")
 passby_press = true
 action = "boost"
+
+[node name="PauseButton" type="Button" parent="LevelUIWrapper"]
+layout_mode = 0
+offset_left = 1038.0
+offset_top = 42.0
+offset_right = 1097.0
+offset_bottom = 73.0
+text = "PAUSE"
