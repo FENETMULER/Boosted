@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://scripts/OverlayManager.gd" id="1_s87qk"]
 
 [node name="OverlayManager" type="CanvasLayer"]
+process_mode = 3
+layer = 5
 script = ExtResource("1_s87qk")
