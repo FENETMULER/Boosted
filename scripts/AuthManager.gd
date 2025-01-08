@@ -4,7 +4,7 @@ signal auth_success
 signal auth_failed(error_message)
 signal auth_state_changed(is_authenticated)
 
-const API_ENDPOINT = "https://i83iwprcp3.execute-api.us-east-1.amazonaws.com/test"
+const API_URL = "https://i83iwprcp3.execute-api.us-east-1.amazonaws.com/test"
 
 var access_token = ""
 var id_token = ""
@@ -67,7 +67,7 @@ func sign_up(new_username: String, password: String, country: String):
 	current_request_type = "signup"
 	
 	auth_request.request(
-		API_ENDPOINT + "/auth/signup",
+		API_URL + "/auth/signup",
 		headers,
 		HTTPClient.METHOD_POST,
 		JSON.stringify(data)
@@ -85,7 +85,7 @@ func sign_in(username_: String, password: String):
 	var headers = ["Content-Type: application/json"]
 	current_request_type = "signin"
 	auth_request.request(
-		API_ENDPOINT + "/auth/signin",
+		API_URL + "/auth/signin",
 		headers,
 		HTTPClient.METHOD_POST,
 		JSON.stringify(data)
@@ -105,7 +105,7 @@ func _validate_session():
 	print('-------------Validating token-----------------')
 	current_request_type = "validate"
 	auth_request.request(
-		API_ENDPOINT + "/auth/validate",
+		API_URL + "/auth/validate",
 		headers,
 		HTTPClient.METHOD_GET,
 		""
@@ -178,7 +178,7 @@ func _refresh_token():
 	current_request_type = "refresh"
 	print(username)
 	auth_request.request(
-		API_ENDPOINT + "/auth/refresh",
+		API_URL + "/auth/refresh",
 		headers,
 		HTTPClient.METHOD_POST,
 		JSON.stringify(data)
