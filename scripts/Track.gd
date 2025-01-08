@@ -20,7 +20,7 @@ const API_URL = "https://i83iwprcp3.execute-api.us-east-1.amazonaws.com/test/lea
 func _ready():
     add_child(timer)
     finish_line.body_entered.connect(_on_finish_line_body_entered)
-    
+    pause_button.pressed.connect(_on_pause_button_pressed)
     timer.timeout.connect(_on_timer_timeout)
     timer.one_shot = false
     timer.wait_time = 0.05 # How often timeout is fired
@@ -123,6 +123,10 @@ func upload_score():
     
     if error != OK:
         print("An error occurred in the HTTP request")
+
+func _on_pause_button_pressed():
+    get_tree().paused = true
+    OverlayManager.push_overlay("pause_menu")
 
 func _on_score_upload_completed(result, response_code, headers, body):
     var json = JSON.parse_string(body.get_string_from_utf8())
