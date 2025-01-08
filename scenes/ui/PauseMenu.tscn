@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhcpdy0yrjpg6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hej04"]
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14, 0.14, 0.14, 0.737255)
+
+[node name="PauseMenuPanel" type="Panel" parent="."]
+self_modulate = Color(0.533333, 0.180392, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 187.0
+offset_top = 131.0
+offset_right = -186.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hej04")
+
+[node name="PlayButton" type="Button" parent="PauseMenuPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.5
+offset_top = 115.0
+offset_right = 74.5
+offset_bottom = 164.0
+grow_horizontal = 2
+text = "Play"
+
+[node name="LeaderboardButton" type="Button" parent="PauseMenuPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 140.0
+offset_top = -14.0
+offset_right = 292.0
+offset_bottom = 35.0
+grow_vertical = 2
+text = "Leaderboard"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.526
+anchor_right = 1.0
+anchor_bottom = 0.526
+offset_left = -315.0
+offset_top = -24.452
+offset_right = -163.0
+offset_bottom = 24.548
+grow_horizontal = 0
+grow_vertical = 2
+text = "MainMenu"
+
+[node name="TracksButton" type="Button" parent="PauseMenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 1.0
+anchor_right = 0.498
+anchor_bottom = 1.0
+offset_left = -75.942
+offset_top = -132.0
+offset_right = 76.058
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Tracks"
+
+[node name="BestTimeLabel" type="Label" parent="PauseMenuPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.5
+offset_top = 49.0
+offset_right = 39.5
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "Best: 12.3"
