@@ -28,6 +28,7 @@ func _ready():
     # Setup HTTP request node
     http_request = HTTPRequest.new()
     add_child(http_request)
+    http_request.process_mode = Node.PROCESS_MODE_ALWAYS
     http_request.request_completed.connect(_on_score_upload_completed)
     
     setup_track()
@@ -62,6 +63,42 @@ func _on_finish_line_body_entered(body):
         timer.stop()
         print('track completed!')
         save_best_score()
+        show_track_finished_overlay()
+
+func get_best_time() -> float:
+    var save_path = "user://bestscores.save"
+    var file = FileAccess.open(save_path, FileAccess.READ)
+    
+    if file:
+        var json_string = file.get_as_text()
+        var save_data = JSON.parse_string(json_string)
+        if save_data and save_data.has(track_name):
+            return save_data[track_name]
+    return 0
+    
+
+func show_track_finished_overlay():
+    get_tree().paused = true
+    var overlay = preload('res://scenes/ui/TrackFinishedOverlay.tscn').instantiate()
+    
+    # Get the best time
+    var best_time = get_best_time()
+    var current_time_label = overlay.get_node('TrackFinishedOverlayWrapper/CurrentTimeLabel')
+    current_time_label.text = 'current Time: %.2f' % time_elapsed
+    var best_time_label = overlay.get_node('TrackFinishedOverlayWrapper/BestTimeLabel')
+    best_time_label.text = 'Best Time: %.2f' % best_time
+    # Button signals
+    var restart_button = overlay.get_node('TrackFinishedOverlayWrapper/RestartButton')
+    restart_button.pressed.connect(reset_track)
+
+    var tracks_button = overlay.get_node('TrackFinishedOverlayWrapper/TracksButton')
+    tracks_button.pressed.connect(func():
+        SceneManager.change_scene("track_selection_menu")
+        get_tree().paused = false
+        OverlayManager.clear_overlays()
+    )
+    
+    OverlayManager.push_overlay_node(overlay)
 
 func save_best_score():
     # Get the previous best time from local storage
@@ -141,6 +178,8 @@ func _on_score_upload_completed(result, response_code, headers, body):
         # Handle error cases appropriately
 
 func reset_track():
+    get_tree().paused = false
+    OverlayManager.clear_overlays()
     timer.stop()
     is_race_started = false
     setup_track()

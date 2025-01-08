@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c5wq4t62g7407"]
+
+[node name="TrackFinishedOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TrackFinishedOverlayWrapper" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 325.0
+offset_top = 130.0
+offset_right = -260.0
+offset_bottom = -191.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CurrentTimeLabel" type="Label" parent="TrackFinishedOverlayWrapper"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_top = 79.0
+offset_right = 25.5
+offset_bottom = 102.0
+grow_horizontal = 2
+text = "Current Time: "
+
+[node name="BestTimeLabel" type="Label" parent="TrackFinishedOverlayWrapper"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_right = 0.48
+offset_left = -21.32
+offset_top = 124.0
+offset_right = 21.68
+offset_bottom = 147.0
+text = "Best: "
+
+[node name="RestartButton" type="Button" parent="TrackFinishedOverlayWrapper"]
+layout_mode = 1
+offset_left = 176.0
+offset_top = 197.0
+offset_right = 241.0
+offset_bottom = 228.0
+text = "Restart"
+
+[node name="TracksButton" type="Button" parent="TrackFinishedOverlayWrapper"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -234.0
+offset_top = 197.0
+offset_right = -169.0
+offset_bottom = 228.0
+grow_horizontal = 0
+text = "Tracks"

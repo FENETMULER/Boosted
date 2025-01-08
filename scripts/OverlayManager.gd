@@ -4,16 +4,25 @@ var overlay_stack: Array = []
 
 var overlay_scenes: Dictionary = {
 	"pause_menu": preload("res://scenes/ui/PauseMenu.tscn"),
-	# "Leaderboard": preload("res://scenes/Leaderboard.tscn"),
+	"leaderboard": preload("res://scenes/ui/Leaderboard.tscn"),
 	
 }
 
 func push_overlay(overlay_name: String):
 	var overlay = overlay_scenes[overlay_name].instantiate()
 	overlay_stack.append(overlay)
+	if overlay_stack.size() > 1:
+		overlay.z_index = 3
 	add_child(overlay)
-	overlay.position = Vector2(0, 0) # Adjust to your screen's center or desired position
+	overlay.position = Vector2(0, 0)
 	# overlay.process_mode = Node.PROCESS_MODE_ALWAYS
+
+func push_overlay_node(overlay: Node):
+	overlay_stack.append(overlay)
+	if overlay_stack.size() > 1:
+		overlay.z_index = 3
+	add_child(overlay)
+	overlay.position = Vector2(0, 0)
 
 # Removes the top overlay from the stack
 func pop_overlay():

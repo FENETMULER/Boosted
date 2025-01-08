@@ -1,4 +1,24 @@
-[gd_scene format=3 uid="uid://b8b6wbpy5owtd"]
+[gd_scene load_steps=5 format=3 uid="uid://b8b6wbpy5owtd"]
+
+[ext_resource type="Theme" uid="uid://i506oqa7clls" path="res://themes/LeaderboardTheme.tres" id="1_oarcj"]
+[ext_resource type="Script" path="res://scripts/Leaderboard.gd" id="1_u538f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8prue"]
+bg_color = Color(0.152941, 0, 0.364706, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y2bn"]
+bg_color = Color(1, 0.466667, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.11, 0.1089, 0.1089, 0.243137)
+shadow_size = 3
+shadow_offset = Vector2(0, 8)
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -7,3 +27,96 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.975097)
+theme = ExtResource("1_oarcj")
+script = ExtResource("1_u538f")
+
+[node name="LeaderboardWrapper" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 95.0
+offset_top = 76.0
+offset_right = -86.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8prue")
+
+[node name="CloseButton" type="Button" parent="LeaderboardWrapper"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -134.0
+offset_top = 26.0
+offset_right = -37.0
+offset_bottom = 77.0
+grow_horizontal = 0
+text = "CLOSE"
+
+[node name="VSeparator" type="VSeparator" parent="LeaderboardWrapper"]
+self_modulate = Color(0.364706, 0.313726, 0.843137, 1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.5
+offset_top = 117.0
+offset_right = 2.5
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeaderboardLabel" type="Label" parent="LeaderboardWrapper"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 39.8859
+offset_bottom = 72.8859
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="TitlePanel" type="Panel" parent="LeaderboardWrapper"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 101.0
+offset_right = 388.0
+offset_bottom = 148.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2y2bn")
+
+[node name="GlobalLabel" type="Label" parent="LeaderboardWrapper/TitlePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Global"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitlePanel2" type="Panel" parent="LeaderboardWrapper"]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 101.418
+offset_right = 887.0
+offset_bottom = 148.418
+theme_override_styles/panel = SubResource("StyleBoxFlat_2y2bn")
+
+[node name="GlobalLabel" type="Label" parent="LeaderboardWrapper/TitlePanel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Local"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="LeaderboardWrapper/CloseButton" to="." method="_on_close_button_pressed"]

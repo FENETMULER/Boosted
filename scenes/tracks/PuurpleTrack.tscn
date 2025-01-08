@@ -35,7 +35,7 @@ sources/1 = SubResource("TileSetAtlasSource_2v73i")
 glow_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4fxh"]
-size = Vector2(160, 42)
+size = Vector2(160, 33)
 
 [node name="PuurpleTrack" type="Node2D"]
 script = ExtResource("1_cm0c5")
@@ -67,7 +67,7 @@ action = "reset_track"
 [node name="FinishLine" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
-position = Vector2(561, 340)
+position = Vector2(561, 335.5)
 shape = SubResource("RectangleShape2D_g4fxh")
 
 [editable path="LevelUI"]

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://i506oqa7clls"]
+
+[ext_resource type="FontFile" uid="uid://cq1tsomxbci4y" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_rfh4f"]
+
+[resource]
+default_font = ExtResource("1_rfh4f")

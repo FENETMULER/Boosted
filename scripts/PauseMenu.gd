@@ -22,3 +22,7 @@ func _change_scene_and_pop_overlay(scene_name: String) -> void:
 	get_tree().paused = false
 	SceneManager.change_scene(scene_name)
 	OverlayManager.pop_overlay()
+
+
+func _on_leaderboard_button_pressed() -> void:
+	OverlayManager.push_overlay('leaderboard')
