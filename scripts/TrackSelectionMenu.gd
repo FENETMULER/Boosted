@@ -24,12 +24,12 @@ var tracks_data:= [
 	}, 
 	# --Placeholders--
 	{   
-		'track_identifier': 'puurple',
+		'track_identifier': 'aurange',
 		'track_display_name': 'REDD',
 		'track_scene_path': 'res://scenes/tracks/PuurpleTrack.tscn',
 	},
 	{
-		'track_identifier': 'puurple',
+		'track_identifier': 'redd',
 		'track_display_name': 'BLUEE',
 		'track_scene_path': 'res://scenes/tracks/PuurpleTrack.tscn',
 	}
@@ -43,6 +43,7 @@ func _ready():
 		
 		track.get_node('MarginContainer/VBoxContainer/Labels/TrackName').text = data['track_display_name']
 		track.get_node('MarginContainer/VBoxContainer/Buttons/Play').pressed.connect(func(): SceneManager.change_scene(data['track_identifier']))
+		track.get_node('MarginContainer/VBoxContainer/Buttons/Leaderboard').pressed.connect(func(): _on_leaderboard_button_pressed(data['track_identifier']))
 		carousel_container.add_child(track)
 
 	# Get all carousel items
@@ -73,6 +74,10 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed('right_button'):
 		next_item()
 
+func _on_leaderboard_button_pressed(track_name: String):
+	var leaderboard_scene = preload('res://scenes/ui/Leaderboard.tscn').instantiate()
+	leaderboard_scene.track_name = track_name
+	OverlayManager.push_overlay_node(leaderboard_scene)
 
 func update_carousel():
 	for i in range(items.size()):
