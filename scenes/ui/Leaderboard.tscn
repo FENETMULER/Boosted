@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8b6wbpy5owtd"]
+[gd_scene load_steps=6 format=3 uid="uid://b8b6wbpy5owtd"]
 
 [ext_resource type="Theme" uid="uid://i506oqa7clls" path="res://themes/LeaderboardTheme.tres" id="1_oarcj"]
 [ext_resource type="Script" path="res://scripts/Leaderboard.gd" id="1_u538f"]
+[ext_resource type="PackedScene" uid="uid://db2h2l21w1rco" path="res://scenes/ui/LeaderboardItem.tscn" id="3_1y3y0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8prue"]
 bg_color = Color(0.152941, 0, 0.364706, 1)
@@ -118,5 +119,19 @@ grow_vertical = 2
 text = "Local"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardWrapper"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 177.308
+offset_right = 403.0
+offset_bottom = 463.308
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeaderboardWrapper/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeaderboardItem" parent="LeaderboardWrapper/ScrollContainer/VBoxContainer" instance=ExtResource("3_1y3y0")]
+layout_mode = 2
 
 [connection signal="pressed" from="LeaderboardWrapper/CloseButton" to="." method="_on_close_button_pressed"]

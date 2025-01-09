@@ -9,7 +9,7 @@ class_name Track
 
 var time_elapsed: float = 0
 var is_race_started: bool = false
-var track_name: String = 'redd'
+var track_name: String = 'aurange'
 
 # Add HTTP request node
 var http_request: HTTPRequest
@@ -28,7 +28,7 @@ func _ready():
     # Setup HTTP request node
     http_request = HTTPRequest.new()
     add_child(http_request)
-    http_request.process_mode = Node.PROCESS_MODE_ALWAYS
+    http_request.process_mode = Node.PROCESS_MODE_ALWAYS # So that request can still be processed when paused
     http_request.request_completed.connect(_on_score_upload_completed)
     
     setup_track()
@@ -145,8 +145,8 @@ func upload_score():
     
     var body = {
         "id_token": id_token,
-        "track": track_name.to_lower(),
-        "score": time_elapsed
+        "trackName": track_name.to_lower(),
+        "time": time_elapsed
     }
     
     var json_body = JSON.stringify(body)
