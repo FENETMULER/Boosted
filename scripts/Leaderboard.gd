@@ -67,27 +67,32 @@ func _on_leaderboard_data_received(result, response_code, headers, body):
 
 func display_leaderboards():
     # Assuming you have two VBoxContainer nodes for each leaderboard
-    var global_container = $LeaderboardWrapper/ScrollContainer/VBoxContainer
-    # var local_container = $PanelContainer/MarginContainer/HBoxContainer/LocalLeaderboard/VBoxContainer
+    var global_container = $LeaderboardWrapper/GlobalScrollContainer/VBoxContainer
+    var local_container = $LeaderboardWrapper/LocalScrollContainer/VBoxContainer
     
     # Clear existing entries
     for child in global_container.get_children():
         child.queue_free()
-    # for child in local_container.get_children():
-    #     child.queue_free()
+    for child in local_container.get_children():
+        child.queue_free()
     
     # Populate global leaderboard
-    for entry in global_leaderboard:
-        var leaderboard_item = create_leaderboard_item(entry)
+    for i in range(global_leaderboard.size()):
+        var entry = global_leaderboard[i]
+        var leaderboard_item = create_leaderboard_item(entry, i + 1)
         global_container.add_child(leaderboard_item)
-    
-    # Populate local leaderboard
-    # for entry in local_leaderboard:
-    #     var entry_node = create_leaderboard_item(entry)
-    #     local_container.add_child(entry_node)
 
-func create_leaderboard_item(item_data: Dictionary):
+    for i in range(local_leaderboard.size()):
+        var entry = local_leaderboard[i]
+        var leaderboard_item = create_leaderboard_item(entry, i + 1)
+        local_container.add_child(leaderboard_item)
+    
+    
+func create_leaderboard_item(item_data: Dictionary, rank: int) -> Node:
     var item = preload("res://scenes/ui/LeaderboardItem.tscn").instantiate()
+
+    var rank_label = item.get_node('HBoxContainer/RankLabel')
+    rank_label.text = "%s. " % rank
     
     var username_label = item.get_node('HBoxContainer/UsernameLabel')
     username_label.text = item_data.username
