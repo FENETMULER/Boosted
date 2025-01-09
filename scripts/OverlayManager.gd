@@ -9,6 +9,7 @@ var overlay_scenes: Dictionary = {
 }
 
 func push_overlay(overlay_name: String):
+	visible = true
 	var overlay = overlay_scenes[overlay_name].instantiate()
 	overlay_stack.append(overlay)
 	if overlay_stack.size() > 1:
@@ -18,6 +19,7 @@ func push_overlay(overlay_name: String):
 	# overlay.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func push_overlay_node(overlay: Node):
+	visible = true
 	overlay_stack.append(overlay)
 	if overlay_stack.size() > 1:
 		overlay.z_index = 3
@@ -29,9 +31,12 @@ func pop_overlay():
 	if overlay_stack.size() > 0:
 		var overlay = overlay_stack.pop_back()
 		overlay.queue_free()
+	if overlay_stack.size() == 0:
+		visible = false
 
 # Clears all overlays
 func clear_overlays():
 	for overlay in overlay_stack:
 		overlay.queue_free()
 	overlay_stack.clear()
+	visible = false
