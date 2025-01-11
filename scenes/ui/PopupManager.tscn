@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://6h6hlip7rx0m"]
+
+[ext_resource type="FontFile" uid="uid://cq1tsomxbci4y" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_ude73"]
+[ext_resource type="PackedScene" uid="uid://ntoa5tnxow06" path="res://scenes/ui/ErrorPopup.tscn" id="2_sjduw"]
+
+[sub_resource type="Theme" id="Theme_o5546"]
+default_font = ExtResource("1_ude73")
+
+[node name="PopupManager" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = SubResource("Theme_o5546")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="ErrorPopup" parent="MarginContainer" instance=ExtResource("2_sjduw")]
+layout_mode = 2
