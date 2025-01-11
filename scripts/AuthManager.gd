@@ -29,8 +29,8 @@ func _process(_delta):
 		LoadingScreen.visible = false
 
 func _restore_session():
-	is_loading = true
 	if FileAccess.file_exists("user://auth_session.save"):
+		is_loading = true
 		var file = FileAccess.open("user://auth_session.save", FileAccess.READ)
 		var json = JSON.new()
 		json.parse(file.get_line())
@@ -112,6 +112,7 @@ func _validate_session():
 	)
 
 func _on_auth_request_completed(_result, response_code, _headers, body):
+	is_loading = false
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
@@ -130,27 +131,27 @@ func _on_auth_request_completed(_result, response_code, _headers, body):
 			_save_user_session()
 			auth_success.emit()
 			auth_state_changed.emit(true)
-			is_loading = false
 			
 			
 		401: # Unauthorized - try refresh
 			print('-----------token invalid------------')
-			if current_request_type != "refresh":
+			if current_request_type not in ["refresh", "signin"]:
+				print('---------inside if check ------------')
 				_refresh_token()
 				return
 			else:
-				is_loading = false
+				_show_error_message(response)
 		_: # Other errors
-			print('-----------unknown error------------')
-			var error_message = "Unknown error"
-			if response and response.has("message"):
-				error_message = response.message
+			_show_error_message(response)
+
+func _show_error_message(response):
+	var error_message = "Unknown error"
+	if response and response.has("message"):
+		error_message = response.message
 			
-			is_authenticated = false
-			auth_failed.emit(error_message)
-			auth_state_changed.emit(false)
-			is_loading = false
-	
+		is_authenticated = false
+		auth_failed.emit(error_message)
+		auth_state_changed.emit(false)
 
 func _save_user_session():
 	var save_data = {
