@@ -1,11 +1,6 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
 func _on_play_button_pressed() -> void:
 	get_tree().paused = false
 	OverlayManager.pop_overlay()
@@ -25,4 +20,7 @@ func _change_scene_and_pop_overlay(scene_name: String) -> void:
 
 
 func _on_leaderboard_button_pressed() -> void:
-	OverlayManager.push_overlay('leaderboard')
+	var leaderboard_scene = preload('res://scenes/ui/Leaderboard.tscn').instantiate()
+	leaderboard_scene.track_name = SceneManager.current_track
+	OverlayManager.push_overlay_node(leaderboard_scene)
+	print(leaderboard_scene.track_name)
