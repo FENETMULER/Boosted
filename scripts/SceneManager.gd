@@ -4,8 +4,10 @@ signal scene_changed(scene_name)
 
 var main_scene: Node
 var current_scene: Node
+var current_track: String
 
 var is_transitioning := false
+var tracks := ['puurple', 'aurange', 'redd']
 
 
 var scenes := {
@@ -13,12 +15,19 @@ var scenes := {
 	'auth_screen': preload('res://scenes/AuthScreen.tscn'),
 	'track_selection_menu': preload('res://scenes/TrackSelectionMenu.tscn'),
 	'puurple': preload('res://scenes/tracks/PuurpleTrack.tscn'),
+	'aurange': preload('res://scenes/tracks/AurangeTrack.tscn'),
 }
 
 func _ready() -> void:
 	main_scene = get_node('/root/Main')
 
 func change_scene(scene_name: String) -> void:
+	# check if the scene is a track
+	if scene_name in tracks:
+		current_track = scene_name
+	else:
+		current_track = ''
+
 	if is_transitioning:
 		return
 	if not scenes.has(scene_name):

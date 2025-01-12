@@ -54,3 +54,7 @@ func show_auth_screen():
 		SceneManager.change_scene('auth_screen')
 	else:
 		push_error("Auth screen not found! Make sure to add it as a child node.")
+
+
+func _on_credits_button_pressed() -> void:
+	OverlayManager.push_overlay('credits')
