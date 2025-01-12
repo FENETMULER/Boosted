@@ -3,21 +3,23 @@ extends Node2D
 class_name Track
 
 @onready var timer: Timer = Timer.new()
-@onready var timer_label: Label = $LevelUI/LevelUIWrapper/Time
+@onready var time_label: Label = $LevelUI/LevelUIWrapper/MarginContainer/HBoxContainer/Time
 @onready var finish_line: Area2D = $FinishLine
-@onready var pause_button: Button = $LevelUI/LevelUIWrapper/PauseButton
+@onready var pause_button: Button = $LevelUI/LevelUIWrapper/MarginContainer/HBoxContainer/PauseButton
 
 var time_elapsed: float = 0
 var is_race_started: bool = false
-var track_name: String = 'aurange'
+var track_name: String
 
-# Add HTTP request node
+
 var http_request: HTTPRequest
 
-# Constants for the API
-const API_URL = "https://i83iwprcp3.execute-api.us-east-1.amazonaws.com/test/leaderboard"
+# Constants
+const API_URL = env.API_URL
+const BEST_SCORES_LOCATION = env.BEST_SCORES_LOCATION
 
 func _ready():
+    track_name = SceneManager.current_track
     add_child(timer)
     finish_line.body_entered.connect(_on_finish_line_body_entered)
     pause_button.pressed.connect(_on_pause_button_pressed)
@@ -42,7 +44,7 @@ func _input(event):
 func setup_track():
     time_elapsed = 0
     is_race_started = false
-    timer_label.text = "00.00"
+    time_label.text = "00.00"
 
 func _on_player_started_moving():
     if !is_race_started:
@@ -56,7 +58,7 @@ func _on_timer_timeout():
         update_timer_display()
 
 func update_timer_display():
-    timer_label.text = "%.2f" % time_elapsed
+    time_label.text = "%.2f" % time_elapsed
 
 func _on_finish_line_body_entered(body):
     if body.is_in_group("player") and is_race_started:
@@ -66,8 +68,7 @@ func _on_finish_line_body_entered(body):
         show_track_finished_overlay()
 
 func get_best_time() -> float:
-    var save_path = "user://bestscores.save"
-    var file = FileAccess.open(save_path, FileAccess.READ)
+    var file = FileAccess.open(BEST_SCORES_LOCATION, FileAccess.READ)
     
     if file:
         var json_string = file.get_as_text()
@@ -103,8 +104,8 @@ func show_track_finished_overlay():
 func save_best_score():
     # Get the previous best time from local storage
     var save_data = {}
-    var save_path = "user://bestscores.save"
-    var file = FileAccess.open(save_path, FileAccess.READ)
+    var file = FileAccess.open(BEST_SCORES_LOCATION, FileAccess.READ)
+    
     
     if file:
         var json_string = file.get_as_text()
@@ -117,14 +118,15 @@ func save_best_score():
     # Check if current score is better (lower) than saved score
     var should_upload = false
     if !save_data.has(track_name) or time_elapsed < save_data[track_name]:
-        save_data[track_name] = time_elapsed
+        save_data[track_name] = floor(time_elapsed * 100) / 100
         should_upload = true
         
         # Save the new best time
-        file = FileAccess.open(save_path, FileAccess.WRITE)
+        file = FileAccess.open(BEST_SCORES_LOCATION, FileAccess.WRITE)
         file.store_string(JSON.stringify(save_data))
     
     if should_upload:
+        PopupManager.show_success_popup("New Best Time!")
         upload_score()
     else:
         print("Not a new best time!")
@@ -144,9 +146,10 @@ func upload_score():
     ]
     
     var body = {
+        
         "id_token": id_token,
         "trackName": track_name.to_lower(),
-        "time": time_elapsed
+        "time": floor(time_elapsed * 100) / 100
     }
     
     var json_body = JSON.stringify(body)
@@ -172,10 +175,8 @@ func _on_score_upload_completed(result, response_code, headers, body):
         # var json = JSON.parse_string(body.get_string_from_utf8())
         # print(json)
         print("Score uploaded successfully!")
-        # Need to show success message to player here
     else:
-        pass
-        # Handle error cases appropriately
+        PopupManager.show_error_popup("Error Uploading Time")
 
 func reset_track():
     get_tree().paused = false
