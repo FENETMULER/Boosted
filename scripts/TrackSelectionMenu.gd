@@ -12,7 +12,7 @@ var current_index = 0
 # Configuration
 var spacing = 800
 var center_scale = Vector2(1.2, 1.2)
-var side_scale = Vector2(0.8, 0.8)
+var side_scale = Vector2(0.6, 0.6)
 var transition_time = 0.3
 
 # Tracks Data
@@ -22,25 +22,29 @@ var tracks_data:= [
 		'track_display_name': 'PUURPLE',
 		'track_scene_path': 'res://scenes/tracks/PuurpleTrack.tscn'
 	}, 
-	# --Placeholders--
 	{   
 		'track_identifier': 'aurange',
-		'track_display_name': 'REDD',
-		'track_scene_path': 'res://scenes/tracks/PuurpleTrack.tscn',
+		'track_display_name': 'AURANGE',
+		'track_scene_path': 'res://scenes/tracks/AurangeTrack.tscn',
 	},
 	{
 		'track_identifier': 'redd',
-		'track_display_name': 'BLUEE',
+		'track_display_name': 'REDD',
 		'track_scene_path': 'res://scenes/tracks/PuurpleTrack.tscn',
 	}
 ]
 
 
 func _ready():
+	
+	GameManager.setup_sound_buttons()
 
 	for data in tracks_data:
 		var track = track_container.instantiate()
-		
+		var best_time = '__'
+		if GameManager.get_best_time(data['track_identifier']) != -1:
+			best_time = '%0.2f' %GameManager.get_best_time(data['track_identifier'])
+		track.get_node('MarginContainer/VBoxContainer/Labels/Best').text = 'Best: ' + best_time
 		track.get_node('MarginContainer/VBoxContainer/Labels/TrackName').text = data['track_display_name']
 		track.get_node('MarginContainer/VBoxContainer/Buttons/Play').pressed.connect(func(): SceneManager.change_scene(data['track_identifier']))
 		track.get_node('MarginContainer/VBoxContainer/Buttons/Leaderboard').pressed.connect(func(): _on_leaderboard_button_pressed(data['track_identifier']))
@@ -57,7 +61,7 @@ func _ready():
 	for item in items:
 		# Set the pivot point to center
 		# item.custom_minimum_size = Vector2(600, 300)
-		item.size = Vector2(600,320)
+		item.size = Vector2(700,420)
 		
 		# item.pivot_offset = item.size / 2
 		# Start all items at normal scale
@@ -78,6 +82,7 @@ func _on_leaderboard_button_pressed(track_name: String):
 	var leaderboard_scene = preload('res://scenes/ui/Leaderboard.tscn').instantiate()
 	leaderboard_scene.track_name = track_name
 	OverlayManager.push_overlay_node(leaderboard_scene)
+	print(leaderboard_scene.track_name)
 
 func update_carousel():
 	for i in range(items.size()):
@@ -94,8 +99,10 @@ func update_carousel():
 		var target_scale
 		if relative_index == 0:
 			target_scale = center_scale
+			item.z_index = 1
 		else:
 			target_scale = side_scale
+			item.z_index = 0
 		
 		# Create tween for smooth transition
 		var tween = create_tween()
