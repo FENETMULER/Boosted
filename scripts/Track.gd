@@ -47,9 +47,9 @@ func setup_track():
     time_label.text = "00.00"
 
 func _on_player_started_moving():
+    timer.start()
     if !is_race_started:
         print('-----player started moving----')
-        timer.start()
         is_race_started = true
 
 func _on_timer_timeout():
@@ -58,7 +58,7 @@ func _on_timer_timeout():
         update_timer_display()
 
 func update_timer_display():
-    time_label.text = "%.2f" % time_elapsed
+    time_label.text = "%.2f" % formatTime(time_elapsed)
 
 func _on_finish_line_body_entered(body):
     if body.is_in_group("player") and is_race_started:
@@ -85,7 +85,7 @@ func show_track_finished_overlay():
     # Get the best time
     var best_time = get_best_time()
     var current_time_label = overlay.get_node('TrackFinishedOverlayWrapper/CurrentTimeLabel')
-    current_time_label.text = 'current Time: %.2f' % time_elapsed
+    current_time_label.text = 'current Time: %.2f' % formatTime(time_elapsed)
     var best_time_label = overlay.get_node('TrackFinishedOverlayWrapper/BestTimeLabel')
     best_time_label.text = 'Best Time: %.2f' % best_time
     # Button signals
@@ -117,8 +117,9 @@ func save_best_score():
     
     # Check if current score is better (lower) than saved score
     var should_upload = false
-    if !save_data.has(track_name) or time_elapsed < save_data[track_name]:
-        save_data[track_name] = floor(time_elapsed * 100) / 100
+    var time = formatTime(time_elapsed)
+    if !save_data.has(track_name) or time < save_data[track_name]:
+        save_data[track_name] = time
         should_upload = true
         
         # Save the new best time
@@ -130,6 +131,15 @@ func save_best_score():
         upload_score()
     else:
         print("Not a new best time!")
+
+func createTimeHash(time: float) -> String:
+    var combined = str(time) + track_name + env.TIME_HASH_SECRET
+    var timeHash = combined.sha256_text()
+    return timeHash
+
+func formatTime(time: float) -> float:
+    return floor(time * 100) / 100
+    
 
 func upload_score():
     # Get tokens from your auth system
@@ -144,18 +154,20 @@ func upload_score():
         "Content-Type: application/json",
         "Authorization: Bearer " + access_token
     ]
-    
+    var time = formatTime(time_elapsed)
+    track_name = track_name.to_lower()
     var body = {
         
         "id_token": id_token,
-        "trackName": track_name.to_lower(),
-        "time": floor(time_elapsed * 100) / 100
+        "trackName": track_name,
+        "time": time,
+        "timeHash": createTimeHash(time)
     }
     
     var json_body = JSON.stringify(body)
     
     var error = http_request.request(
-        API_URL,
+        API_URL + "/leaderboard",
         headers,
         HTTPClient.METHOD_POST,
         json_body
@@ -163,6 +175,7 @@ func upload_score():
     
     if error != OK:
         print("An error occurred in the HTTP request")
+
 
 func _on_pause_button_pressed():
     get_tree().paused = true
@@ -185,3 +198,6 @@ func reset_track():
     is_race_started = false
     setup_track()
     $Rocket.reset_position()
+    # Handling the case where the boost and reset are pressed at the same time
+    if Input.is_action_pressed("boost"):
+        _on_player_started_moving()
