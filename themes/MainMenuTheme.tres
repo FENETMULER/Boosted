@@ -22,7 +22,7 @@ shadow_color = Color(0.597667, 0.29, 1, 0.768627)
 shadow_size = 7
 
 [resource]
-Button/font_sizes/font_size = 30
+Button/font_sizes/font_size = 48
 Button/fonts/font = ExtResource("1_b42w7")
 Button/styles/normal = SubResource("StyleBoxFlat_2o6k8")
 Label/font_sizes/font_size = 16
