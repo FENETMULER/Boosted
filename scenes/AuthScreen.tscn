@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3ayer36frqu1"]
+[gd_scene load_steps=6 format=3 uid="uid://c3ayer36frqu1"]
 
 [ext_resource type="Theme" uid="uid://dx5c1c5qel8el" path="res://themes/AuthScreenTheme.tres" id="1_damsx"]
 [ext_resource type="Script" path="res://scripts/AuthScreen.gd" id="1_nmico"]
@@ -18,10 +18,10 @@ shadow_color = Color(0.3625, 0, 0.87, 0.333333)
 shadow_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0hjj"]
-content_margin_left = 20.0
-content_margin_top = 6.0
-content_margin_right = 20.0
-content_margin_bottom = 6.0
+content_margin_left = 25.0
+content_margin_top = 8.0
+content_margin_right = 25.0
+content_margin_bottom = 8.0
 bg_color = Color(1, 0.584314, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -29,6 +29,12 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_color = Color(1, 0.5, 0, 0.223529)
 shadow_size = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pm5a"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
 
 [node name="AuthScreen" type="Control"]
 layout_mode = 3
@@ -41,148 +47,235 @@ theme = ExtResource("1_damsx")
 script = ExtResource("1_nmico")
 
 [node name="SignupContainer" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 632.0
-offset_top = 242.0
-offset_right = -693.0
-offset_bottom = -221.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -303.5
+offset_right = 147.0
+offset_bottom = 303.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8wwb3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SignupContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SignupContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SignupContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="SignupContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SignupContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 96
 
-[node name="CreateYourRocketeerLabel" type="Label" parent="SignupContainer/VBoxContainer"]
+[node name="CreateYourRocketeerLabel" type="Label" parent="SignupContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 45
 text = "Create Your Rocketeer"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SignupContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SignupContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 18
 
-[node name="ErrorLabel" type="Label" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="SignupErrorLabel" type="Label" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.210938, 0, 1)
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 31
 
-[node name="RocketeerNameLabel" type="Label" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="RocketeerNameLabel" type="Label" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 text = "Rocketeer Name"
 
-[node name="UsernameInput" type="LineEdit" parent="SignupContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 40)
+[node name="UsernameInput" type="LineEdit" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 placeholder_text = "Name"
 
-[node name="MarginContainer4" type="MarginContainer" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 13
 
-[node name="PasswordLabel" type="Label" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="PasswordLabel" type="Label" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 text = "Password"
 
-[node name="PasswordInput" type="LineEdit" parent="SignupContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 40)
+[node name="PasswordInput" type="LineEdit" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 placeholder_text = "Password"
 
-[node name="MarginContainer5" type="MarginContainer" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer5" type="MarginContainer" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 13
 
-[node name="CountryLabel" type="Label" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="CountryLabel" type="Label" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 text = "Country"
 
-[node name="CountrySelector" type="OptionButton" parent="SignupContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 40)
+[node name="CountrySelector" type="OptionButton" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_constants/h_separation = 14
 theme_override_constants/icon_max_width = 25
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 22
 
-[node name="MarginContainer3" type="MarginContainer" parent="SignupContainer/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="SignupContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 13
 
-[node name="CreateButton" type="Button" parent="SignupContainer/VBoxContainer"]
+[node name="CreateButton" type="Button" parent="SignupContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_f0hjj")
 text = "Create"
 
-[node name="MarginContainer6" type="MarginContainer" parent="SignupContainer/VBoxContainer"]
+[node name="MarginContainer6" type="MarginContainer" parent="SignupContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 7
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SignupContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SignupContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="AlreadyHaveAnAccountLabel" type="Label" parent="SignupContainer/VBoxContainer/HBoxContainer"]
+[node name="AlreadyHaveAnAccountLabel" type="Label" parent="SignupContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 text = "Already Have One?"
 
-[node name="GotoSigninButton" type="Button" parent="SignupContainer/VBoxContainer/HBoxContainer"]
+[node name="GotoSigninButton" type="Button" parent="SignupContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.584314, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6pm5a")
 text = "Sign In"
 
-[node name="SigninContainer" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="SigninContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -303.5
+offset_right = 147.0
+offset_bottom = 303.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8wwb3")
 
-[node name="UsernameInput" type="LineEdit" parent="SigninContainer"]
-layout_mode = 0
-offset_left = 884.0
-offset_top = 305.0
-offset_right = 1048.0
-offset_bottom = 336.0
+[node name="MarginContainer" type="MarginContainer" parent="SigninContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SigninContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="SigninContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 96
+
+[node name="CreateYourRocketeerLabel" type="Label" parent="SigninContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Sign In"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SigninContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 18
+
+[node name="SigninErrorLabel" type="Label" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.210938, 0, 1)
+theme_override_font_sizes/font_size = 31
+
+[node name="UsernameLabel" type="Label" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Username"
+
+[node name="UsernameInput" type="LineEdit" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
 placeholder_text = "Username"
 
-[node name="PasswordInput" type="LineEdit" parent="SigninContainer"]
-layout_mode = 0
-offset_left = 886.0
-offset_top = 347.0
-offset_right = 1050.0
-offset_bottom = 378.0
+[node name="MarginContainer4" type="MarginContainer" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 13
+
+[node name="PasswordLabel" type="Label" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Password"
+
+[node name="PasswordInput" type="LineEdit" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
 placeholder_text = "Password"
 
-[node name="SigninButton" type="Button" parent="SigninContainer"]
-layout_mode = 0
-offset_left = 929.0
-offset_top = 405.0
-offset_right = 989.0
-offset_bottom = 436.0
+[node name="MarginContainer3" type="MarginContainer" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 13
+
+[node name="SigninButton" type="Button" parent="SigninContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0hjj")
 text = "Sign In"
 
-[node name="GotoSignupButton" type="Button" parent="SigninContainer"]
-layout_mode = 0
-offset_left = 929.0
-offset_top = 449.0
-offset_right = 994.0
-offset_bottom = 480.0
-text = "Sign up"
+[node name="MarginContainer6" type="MarginContainer" parent="SigninContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 7
 
-[connection signal="pressed" from="SignupContainer/VBoxContainer/CreateButton" to="." method="_on_signup_button_pressed"]
-[connection signal="pressed" from="SignupContainer/VBoxContainer/HBoxContainer/GotoSigninButton" to="." method="_on_goto_signin_button_pressed"]
-[connection signal="pressed" from="SigninContainer/SigninButton" to="." method="_on_signin_button_pressed"]
-[connection signal="pressed" from="SigninContainer/GotoSignupButton" to="." method="_on_goto_signup_button_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SigninContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="DontHaveAnAccountLabel" type="Label" parent="SigninContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Don't have an Account?"
+
+[node name="GotoSignupButton" type="Button" parent="SigninContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.584314, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6pm5a")
+text = "Sign Up"
+
+[connection signal="pressed" from="SignupContainer/MarginContainer/VBoxContainer/CreateButton" to="." method="_on_signup_button_pressed"]
+[connection signal="pressed" from="SignupContainer/MarginContainer/VBoxContainer/HBoxContainer/GotoSigninButton" to="." method="_on_goto_signin_button_pressed"]
+[connection signal="pressed" from="SigninContainer/MarginContainer/VBoxContainer/SigninButton" to="." method="_on_signin_button_pressed"]
+[connection signal="pressed" from="SigninContainer/MarginContainer/VBoxContainer/HBoxContainer/GotoSignupButton" to="." method="_on_goto_signup_button_pressed"]
