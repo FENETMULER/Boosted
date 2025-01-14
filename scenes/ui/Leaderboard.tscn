@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8b6wbpy5owtd"]
+[gd_scene load_steps=9 format=3 uid="uid://b8b6wbpy5owtd"]
 
 [ext_resource type="Theme" uid="uid://i506oqa7clls" path="res://themes/LeaderboardTheme.tres" id="1_oarcj"]
 [ext_resource type="Script" path="res://scripts/Leaderboard.gd" id="1_u538f"]
 [ext_resource type="PackedScene" uid="uid://db2h2l21w1rco" path="res://scenes/ui/LeaderboardItem.tscn" id="3_1y3y0"]
+[ext_resource type="StyleBox" uid="uid://dq8q2ra2xe8me" path="res://themes/CloseButtonStyle.tres" id="3_h7n0r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8prue"]
 bg_color = Color(0.152941, 0, 0.364706, 1)
@@ -11,13 +12,16 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y2bn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2wft"]
+content_margin_left = 0.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
 bg_color = Color(1, 0.466667, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0.11, 0.1089, 0.1089, 0.243137)
+shadow_color = Color(0.11, 0.1089, 0.1089, 0.541176)
 shadow_size = 3
 shadow_offset = Vector2(0, 8)
 
@@ -27,9 +31,20 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0.11, 0.1089, 0.1089, 0.243137)
+shadow_color = Color(0.11, 0.1089, 0.1089, 0.454902)
 shadow_size = 3
 shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqyt3"]
+content_margin_left = 30.0
+content_margin_top = 8.0
+content_margin_right = 40.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.240182, 0.761719, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -42,122 +57,166 @@ scale = Vector2(1, 0.975097)
 theme = ExtResource("1_oarcj")
 script = ExtResource("1_u538f")
 
-[node name="LeaderboardWrapper" type="Panel" parent="."]
+[node name="LeaderboardWrapper" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 95.0
-offset_top = 76.0
-offset_right = -86.0
-offset_bottom = -87.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -336.5
+offset_right = 356.0
+offset_bottom = 336.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8prue")
 
-[node name="CloseButton" type="Button" parent="LeaderboardWrapper"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -134.0
-offset_top = 26.0
-offset_right = -37.0
-offset_bottom = 77.0
-grow_horizontal = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="LeaderboardWrapper"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 46
+
+[node name="MarginContainer4" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 37
+
+[node name="CloseButton" type="Button" parent="LeaderboardWrapper/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = ExtResource("3_h7n0r")
 text = "CLOSE"
 
-[node name="VSeparator" type="VSeparator" parent="LeaderboardWrapper"]
-self_modulate = Color(0.364706, 0.313726, 0.843137, 1)
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1.5
-offset_top = 177.0
-offset_right = 2.5
-offset_bottom = -83.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LeaderboardLabel" type="Label" parent="LeaderboardWrapper"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 39.8859
-offset_bottom = 72.8859
-grow_horizontal = 2
+[node name="LeaderboardLabel" type="Label" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 52
 text = "Leaderboard"
 horizontal_alignment = 1
 
-[node name="TitlePanel" type="Panel" parent="LeaderboardWrapper"]
-layout_mode = 0
-offset_left = 234.0
-offset_top = 177.308
-offset_right = 652.0
-offset_bottom = 242.308
-theme_override_styles/panel = SubResource("StyleBoxFlat_2y2bn")
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 31
 
-[node name="GlobalLabel" type="Label" parent="LeaderboardWrapper/TitlePanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="TitlePanel" type="PanelContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2wft")
+
+[node name="GlobalLabel" type="Label" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer/MarginContainer/TitlePanel"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Global"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TitlePanel2" type="Panel" parent="LeaderboardWrapper"]
-layout_mode = 0
-offset_left = 1046.0
-offset_top = 177.0
-offset_right = 1464.0
-offset_bottom = 242.0
+[node name="MarginContainer2" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="TitlePanel2" type="PanelContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_2otca")
 
-[node name="GlobalLabel" type="Label" parent="LeaderboardWrapper/TitlePanel2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="LocalLabel" type="Label" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer/MarginContainer2/TitlePanel2"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Local"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GlobalScrollContainer" type="ScrollContainer" parent="LeaderboardWrapper"]
-layout_mode = 0
-offset_left = 194.0
-offset_top = 296.0
-offset_right = 680.0
-offset_bottom = 701.0
+[node name="MarginContainer5" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 49
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LeaderboardWrapper/GlobalScrollContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
+
+[node name="GlobalScrollContainer" type="ScrollContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(700, 600)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LeaderboardItem" parent="LeaderboardWrapper/GlobalScrollContainer/VBoxContainer" instance=ExtResource("3_1y3y0")]
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="LeaderboardItem" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_1y3y0")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hqyt3")
+
+[node name="CountryFlag" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="0"]
+texture = null
+
+[node name="RankLabel" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="2"]
+text = ""
+
+[node name="UsernameLabel" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="3"]
+text = "Fetching ..."
+
+[node name="TimeLabel" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="5"]
+text = ""
+
+[node name="VSeparator" type="VSeparator" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(0.364706, 0.313726, 0.843137, 1)
 layout_mode = 2
 
-[node name="LocalScrollContainer" type="ScrollContainer" parent="LeaderboardWrapper"]
-layout_mode = 0
-offset_left = 1016.0
-offset_top = 288.0
-offset_right = 1492.0
-offset_bottom = 701.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LeaderboardWrapper/LocalScrollContainer"]
+[node name="LocalScrollContainer" type="ScrollContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(700, 600)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LeaderboardItem" parent="LeaderboardWrapper/LocalScrollContainer/VBoxContainer" instance=ExtResource("3_1y3y0")]
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="LeaderboardItem" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_1y3y0")]
 layout_mode = 2
 
-[connection signal="pressed" from="LeaderboardWrapper/CloseButton" to="." method="_on_close_button_pressed"]
+[node name="CountryFlag" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="0"]
+texture = null
+
+[node name="RankLabel" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="2"]
+text = ""
+
+[node name="UsernameLabel" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="3"]
+text = "Fetching ..."
+
+[node name="TimeLabel" parent="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem/HBoxContainer" index="5"]
+text = ""
+
+[node name="MarginContainer3" type="MarginContainer" parent="LeaderboardWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 70
+
+[connection signal="pressed" from="LeaderboardWrapper/VBoxContainer/MarginContainer4/CloseButton" to="." method="_on_close_button_pressed"]
+
+[editable path="LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem"]
+[editable path="LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer/VBoxContainer/LeaderboardItem"]
