@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm4j4hg71vece"]
+[gd_scene load_steps=11 format=3 uid="uid://dm4j4hg71vece"]
 
 [ext_resource type="Texture2D" uid="uid://dar876r6oyxcq" path="res://assets/left_arrow.png" id="1_2jrwo"]
 [ext_resource type="FontFile" uid="uid://cq1tsomxbci4y" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_p12hf"]
 [ext_resource type="Texture2D" uid="uid://dmkt36saxx75n" path="res://assets/right_arrow.png" id="2_vwu7u"]
 [ext_resource type="Texture2D" uid="uid://dixk6c7dl82nx" path="res://assets/restart button.png" id="3_45vl2"]
 [ext_resource type="Texture2D" uid="uid://b843fyu0xg6pu" path="res://assets/up_arrow.png" id="4_w5asm"]
+[ext_resource type="Texture2D" uid="uid://2gvgoohkkpsd" path="res://assets/pause_icon.png" id="6_nfnej"]
 
 [sub_resource type="Theme" id="Theme_jg0v8"]
 Label/fonts/font = ExtResource("1_p12hf")
@@ -13,27 +14,33 @@ Label/fonts/font = ExtResource("1_p12hf")
 font_size = 55
 font_color = Color(0.466667, 0.466667, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_of3cs"]
+content_margin_left = 15.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 30.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64g2j"]
+content_margin_left = 15.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="LevelUI" type="CanvasLayer"]
 
 [node name="LevelUIWrapper" type="Control" parent="."]
 layout_mode = 3
-anchor_right = 1.008
-anchor_bottom = 1.006
-offset_right = -0.23999
-offset_bottom = -0.320007
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_jg0v8")
 
-[node name="Time" type="Label" parent="LevelUIWrapper"]
-layout_mode = 1
-offset_left = 84.0
-offset_top = 24.0
-offset_right = 261.0
-offset_bottom = 147.0
-text = "15.66"
-label_settings = SubResource("LabelSettings_fqof6")
-
 [node name="LeftButtonContainer" type="Control" parent="LevelUIWrapper"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -53,6 +60,7 @@ passby_press = true
 action = "left_button"
 
 [node name="RightButtonContainer" type="Control" parent="LevelUIWrapper"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -72,6 +80,7 @@ passby_press = true
 action = "right_button"
 
 [node name="RestartButtonContainer" type="Control" parent="LevelUIWrapper"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -89,6 +98,7 @@ scale = Vector2(1.13017, 1.09583)
 texture_normal = ExtResource("3_45vl2")
 
 [node name="UpButtonContainer" type="Control" parent="LevelUIWrapper"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -110,10 +120,28 @@ texture_normal = ExtResource("4_w5asm")
 passby_press = true
 action = "boost"
 
-[node name="PauseButton" type="Button" parent="LevelUIWrapper"]
-layout_mode = 0
-offset_left = 1038.0
-offset_top = 42.0
-offset_right = 1097.0
-offset_bottom = 73.0
-text = "PAUSE"
+[node name="MarginContainer" type="MarginContainer" parent="LevelUIWrapper"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUIWrapper/MarginContainer"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="LevelUIWrapper/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "15.66"
+label_settings = SubResource("LabelSettings_fqof6")
+
+[node name="PauseButton" type="Button" parent="LevelUIWrapper/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/hover = SubResource("StyleBoxFlat_of3cs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_64g2j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_64g2j")
+icon = ExtResource("6_nfnej")
