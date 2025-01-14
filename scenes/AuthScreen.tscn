@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3ayer36frqu1"]
+[gd_scene load_steps=7 format=3 uid="uid://c3ayer36frqu1"]
 
 [ext_resource type="Theme" uid="uid://dx5c1c5qel8el" path="res://themes/AuthScreenTheme.tres" id="1_damsx"]
 [ext_resource type="Script" path="res://scripts/AuthScreen.gd" id="1_nmico"]
@@ -35,6 +35,23 @@ content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki2of"]
+content_margin_left = 28.0
+content_margin_top = 15.0
+content_margin_right = 28.0
+content_margin_bottom = 15.0
+bg_color = Color(0.334811, 0.242661, 0.667969, 0.839216)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.706667, 0.45, 1, 0.282353)
+shadow_size = 20
 
 [node name="AuthScreen" type="Control"]
 layout_mode = 3
@@ -216,7 +233,7 @@ theme_override_constants/margin_top = 18
 [node name="SigninErrorLabel" type="Label" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.210938, 0, 1)
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 26
 
 [node name="UsernameLabel" type="Label" parent="SigninContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -275,7 +292,21 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxEmpty_6pm5a")
 text = "Sign Up"
 
+[node name="MainMenuButton" type="Button" parent="."]
+z_index = 5
+z_as_relative = false
+layout_mode = 0
+offset_left = 122.0
+offset_top = 96.0
+offset_right = 364.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ki2of")
+text = "Main Menu
+"
+
 [connection signal="pressed" from="SignupContainer/MarginContainer/VBoxContainer/CreateButton" to="." method="_on_signup_button_pressed"]
 [connection signal="pressed" from="SignupContainer/MarginContainer/VBoxContainer/HBoxContainer/GotoSigninButton" to="." method="_on_goto_signin_button_pressed"]
 [connection signal="pressed" from="SigninContainer/MarginContainer/VBoxContainer/SigninButton" to="." method="_on_signin_button_pressed"]
 [connection signal="pressed" from="SigninContainer/MarginContainer/VBoxContainer/HBoxContainer/GotoSignupButton" to="." method="_on_goto_signup_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
