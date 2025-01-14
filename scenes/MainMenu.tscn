@@ -1,15 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://co7baqm7xfft1"]
+[gd_scene load_steps=8 format=3 uid="uid://co7baqm7xfft1"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_aam74"]
 [ext_resource type="Theme" uid="uid://w4m5ybclqpn6" path="res://themes/MainMenuTheme.tres" id="1_e24pe"]
-[ext_resource type="Texture2D" uid="uid://b4ptt7hd5ycpa" path="res://assets/MainMenuRocket.png" id="3_ldg84"]
+[ext_resource type="Texture2D" uid="uid://dh3vwdtnquvlu" path="res://assets/main_menu_gradient.png" id="3_276q1"]
+[ext_resource type="Texture2D" uid="uid://b58ngewipq3ki" path="res://assets/MainMenuRocket.svg" id="4_5f4sk"]
 
-[sub_resource type="Gradient" id="Gradient_uurbw"]
-colors = PackedColorArray(0.0867293, 0, 0.207031, 1, 0.364706, 0, 0.870588, 1)
-metadata/_snap_enabled = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gilg8"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.369958, 0.2925, 0.65, 0.682353)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.462, 0, 0.99, 0.305882)
+shadow_size = 43
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jx6hj"]
-gradient = SubResource("Gradient_uurbw")
+[sub_resource type="Theme" id="Theme_wfmqg"]
+Button/styles/normal = SubResource("StyleBoxFlat_gilg8")
 
 [sub_resource type="LabelSettings" id="LabelSettings_awcvb"]
 font_size = 100
@@ -28,15 +42,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_e24pe")
 
-[node name="Sprite2D" type="Sprite2D" parent="MainMenuWrapper"]
-position = Vector2(641.5, 361)
-scale = Vector2(20.0469, 11.25)
-texture = SubResource("GradientTexture2D_jx6hj")
-region_rect = Rect2(0, 0, 64, 64)
+[node name="TextureRect" type="TextureRect" parent="MainMenuWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_276q1")
 
-[node name="Sprite2D2" type="Sprite2D" parent="MainMenuWrapper"]
-position = Vector2(944, 167)
-texture = ExtResource("3_ldg84")
+[node name="TextureRect2" type="TextureRect" parent="MainMenuWrapper"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -903.0
+offset_top = 155.0
+offset_right = -287.0
+offset_bottom = 771.0
+grow_horizontal = 0
+scale = Vector2(1.07763, 1.07763)
+texture = ExtResource("4_5f4sk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuWrapper"]
 layout_mode = 1
@@ -45,13 +71,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -154.0
-offset_right = 209.0
-offset_bottom = 220.0
+offset_left = -206.0
+offset_top = -223.0
+offset_right = 211.0
+offset_bottom = 234.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme = SubResource("Theme_wfmqg")
+theme_override_constants/separation = 23
 alignment = 1
 
 [node name="Title" type="Label" parent="MainMenuWrapper/VBoxContainer"]
@@ -60,28 +87,38 @@ text = "Boosted"
 label_settings = SubResource("LabelSettings_awcvb")
 horizontal_alignment = 1
 
-[node name="Play" type="Button" parent="MainMenuWrapper/VBoxContainer"]
+[node name="Play" type="Button" parent="MainMenuWrapper/VBoxContainer" groups=["buttons_with_sfx"]]
 layout_mode = 2
 text = "Play"
 
-[node name="Settings" type="Button" parent="MainMenuWrapper/VBoxContainer"]
+[node name="Settings" type="Button" parent="MainMenuWrapper/VBoxContainer" groups=["buttons_with_sfx"]]
 layout_mode = 2
 text = "Settings"
 
-[node name="Quit" type="Button" parent="MainMenuWrapper/VBoxContainer"]
+[node name="Credits" type="Button" parent="MainMenuWrapper/VBoxContainer" groups=["buttons_with_sfx"]]
 layout_mode = 2
-text = "Quit"
+text = "Credits
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuWrapper"]
+layout_mode = 2
+offset_left = 752.0
+offset_top = 337.0
+offset_right = 1169.0
+offset_bottom = 337.0
 
 [node name="Username" type="Label" parent="MainMenuWrapper"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -115.0
-offset_top = 15.0
-offset_right = -16.0
-offset_bottom = 36.0
+offset_left = -239.0
+offset_top = 42.0
+offset_right = -21.0
+offset_bottom = 92.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
 
 [connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Play" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainMenuWrapper/VBoxContainer/Credits" to="." method="_on_credits_button_pressed"]
