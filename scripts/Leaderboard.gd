@@ -37,9 +37,9 @@ func fetch_leaderboards():
             print('No id_token found in session')
     
     # Create the URL with query parameters
-    var base_url = "https://i83iwprcp3.execute-api.us-east-1.amazonaws.com/test/leaderboard"
+    var endpoint = env.API_URL + "/leaderboard"
     var query_params = "?id_token=%s&trackName=%s" % [id_token.uri_encode(), track_name.uri_encode()]
-    var url = base_url + query_params
+    var url = endpoint + query_params
     
     
     var headers = [
@@ -69,8 +69,8 @@ func _on_leaderboard_data_received(result, response_code, headers, body):
 
 func display_leaderboards():
     # Assuming you have two VBoxContainer nodes for each leaderboard
-    var global_container = $LeaderboardWrapper/GlobalScrollContainer/VBoxContainer
-    var local_container = $LeaderboardWrapper/LocalScrollContainer/VBoxContainer
+    var global_container = $LeaderboardWrapper/VBoxContainer/HBoxContainer2/GlobalScrollContainer/MarginContainer/VBoxContainer
+    var local_container = $LeaderboardWrapper/VBoxContainer/HBoxContainer2/LocalScrollContainer/MarginContainer/VBoxContainer
     
     # Clear existing entries
     for child in global_container.get_children():
