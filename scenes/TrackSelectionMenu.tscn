@@ -1,11 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnont4ah22rn4"]
+[gd_scene load_steps=9 format=3 uid="uid://dnont4ah22rn4"]
 
 [ext_resource type="Script" path="res://scripts/TrackSelectionMenu.gd" id="1_btv2n"]
 [ext_resource type="Texture2D" uid="uid://ds3usxld4lbwu" path="res://assets/arrow_left.png" id="1_eohgp"]
 [ext_resource type="Theme" uid="uid://yyj0mbmaif5g" path="res://themes/TrackSelectionMenu.tres" id="1_wo6f7"]
 [ext_resource type="Texture2D" uid="uid://cisbr37tln45m" path="res://assets/arrow_right.png" id="2_jlf1q"]
+[ext_resource type="StyleBox" uid="uid://cdo6v8pr1lrt1" path="res://themes/NavButtonStyle.tres" id="3_05205"]
 [ext_resource type="Script" path="res://scripts/DotIndicatorsWrapper.gd" id="6_c8raw"]
 [ext_resource type="Theme" uid="uid://rcqyoft40qwn" path="res://themes/DotIndicator.tres" id="6_e1wgb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dacmj"]
+content_margin_left = 28.0
+content_margin_top = 15.0
+content_margin_right = 28.0
+content_margin_bottom = 15.0
+bg_color = Color(0.369958, 0.2925, 0.65, 0.682353)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.462, 0, 0.99, 0.172549)
+shadow_size = 15
 
 [node name="TrackSelectionMenu" type="Control"]
 layout_mode = 3
@@ -26,6 +44,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.129276, 0, 0.308594, 1)
 
+[node name="MainMenuButton" type="Button" parent="."]
+z_index = 5
+z_as_relative = false
+layout_mode = 0
+offset_left = 188.0
+offset_top = 169.0
+offset_right = 354.0
+offset_bottom = 219.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_dacmj")
+text = "Main Menu
+"
+
 [node name="TitleMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -34,7 +65,11 @@ offset_bottom = 47.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 47
 
-[node name="TracksTitle" type="Label" parent="TitleMargin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TracksTitle" type="Label" parent="TitleMargin/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
 text = "Tracks"
@@ -50,42 +85,46 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectionMarker" type="Control" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 626.0
-offset_top = 341.0
-offset_right = 666.0
-offset_bottom = 381.0
-
-[node name="PreviousTrackButton" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -96.5
-offset_right = 172.0
-offset_bottom = 96.5
-grow_vertical = 2
-icon = ExtResource("1_eohgp")
-icon_alignment = 1
-
-[node name="NextTrackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -172.0
 offset_top = -96.5
 offset_bottom = 96.5
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="PreviousTrackButton" type="Button" parent="HBoxContainer" groups=["buttons_with_sfx"]]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = ExtResource("3_05205")
+icon = ExtResource("1_eohgp")
+icon_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NextTrackButton" type="Button" parent="HBoxContainer" groups=["buttons_with_sfx"]]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = ExtResource("3_05205")
 icon = ExtResource("2_jlf1q")
 icon_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
 
 [node name="DotIndicatorsWrapper" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -94,35 +133,36 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -92.0
-offset_right = 13.0
+offset_left = -42.0
+offset_top = -115.0
+offset_right = 79.0
 offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("6_e1wgb")
-theme_override_constants/separation = 12
+theme_override_constants/separation = 18
 script = ExtResource("6_c8raw")
 active_dot_color = Color(1, 0.351563, 0, 1)
 inactive_dot_color = Color(1, 1, 1, 1)
 
 [node name="Dot" type="Panel" parent="DotIndicatorsWrapper"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Dot2" type="Panel" parent="DotIndicatorsWrapper"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Dot3" type="Panel" parent="DotIndicatorsWrapper"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[connection signal="pressed" from="PreviousTrackButton" to="." method="_on_previous_track_button_pressed"]
-[connection signal="pressed" from="NextTrackButton" to="." method="_on_next_track_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PreviousTrackButton" to="." method="_on_previous_track_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NextTrackButton" to="." method="_on_next_track_button_pressed"]
